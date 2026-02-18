@@ -6,6 +6,8 @@
   <title>Contact Us | Teatro Ibisco</title>
   <link rel="icon" type="image/png" href="TeatroIbiscoFlor.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <!-- All styles inline - no external CSS needed -->
   <style>
     :root {
       --about-bg: #f5f5f5;
@@ -22,7 +24,6 @@
       --footer-bg: #333;
       --footer-text: #ddd;
     }
-
     .dark-mode {
       --about-bg: #333;
       --carousel-bg: #333;
@@ -38,13 +39,11 @@
       --footer-bg: #111;
       --footer-text: #bbb;
     }
-
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: var(--bg-teal);
@@ -54,7 +53,6 @@
       overflow-x: hidden;
       width: 100%;
     }
-
     header {
       position: fixed;
       top: 0;
@@ -66,7 +64,6 @@
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       transition: background-color 0.3s ease;
     }
-
     nav {
       display: flex;
       justify-content: space-between;
@@ -77,7 +74,6 @@
       position: relative;
       flex-wrap: wrap;
     }
-
     .logo {
       font-size: 1.2rem;
       font-weight: 700;
@@ -87,12 +83,12 @@
       align-items: center;
       max-width: 70%;
     }
-    
+   
     .logo img {
       height: 35px;
       margin-right: 8px;
     }
-    
+   
     @media (max-width: 768px) {
       .logo {
         font-size: 0.9rem;
@@ -102,25 +98,22 @@
         height: 28px;
       }
     }
-
     .nav-links {
       display: flex;
       list-style: none;
       margin: 0;
       padding: 0;
     }
-
     .nav-links li {
       margin-left: 1.5rem;
     }
-    
+   
     @media (max-width: 900px) {
       .nav-links li {
         margin-left: 0;
         margin: 1rem 0;
       }
     }
-
     .nav-links a {
       color: var(--text);
       text-decoration: none;
@@ -129,11 +122,9 @@
       position: relative;
       font-size: 1rem;
     }
-
     .nav-links a:hover {
       color: var(--button-hover);
     }
-
     .nav-links a::after {
       content: '';
       position: absolute;
@@ -144,11 +135,9 @@
       background-color: var(--button-hover);
       transition: width 0.3s ease;
     }
-
     .nav-links a:hover::after {
       width: 100%;
     }
-
     .theme-toggle {
       background: none;
       border: none;
@@ -158,11 +147,9 @@
       margin-left: 1rem;
       transition: transform 0.3s ease;
     }
-
     .theme-toggle:hover {
       transform: scale(1.1);
     }
-
     .hamburger {
       display: none;
       cursor: pointer;
@@ -171,7 +158,6 @@
       color: var(--text);
       font-size: 1.5rem;
     }
-
     .contact-hero {
       height: 50vh;
       min-height: 400px;
@@ -188,12 +174,10 @@
       overflow: hidden;
       width: 100%;
     }
-
     .dark-mode .contact-hero {
       background: linear-gradient(rgba(51, 51, 51, 0.7), rgba(51, 51, 51, 0.7)), url('TeatroIbiscoTodoBranco.png') center no-repeat;
       background-size: contain;
     }
-
     .contact-hero-content {
       max-width: 900px;
       position: relative;
@@ -201,23 +185,19 @@
       width: 100%;
       padding: 0 15px;
     }
-
     .contact-hero h1 {
       font-size: clamp(1.8rem, 5vw, 3.5rem);
       margin-bottom: 1rem;
       text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
     }
-
     .contact-hero p {
       font-size: clamp(1rem, 3vw, 1.4rem);
       text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
     }
-
     .contact-section {
       padding: 3rem 5%;
       background-color: var(--card-bg);
     }
-
     .contact-container {
       display: flex;
       flex-wrap: wrap;
@@ -225,19 +205,16 @@
       max-width: 1200px;
       margin: 0 auto;
     }
-
     .contact-info {
       flex: 1;
       min-width: 280px;
     }
-
     .section-title {
       text-align: center;
       margin-bottom: 2rem;
       font-size: clamp(1.5rem, 4vw, 2rem);
       color: var(--text);
     }
-
     .info-card {
       background-color: var(--bg-teal);
       padding: 1.5rem;
@@ -245,88 +222,75 @@
       margin-bottom: 2rem;
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
     }
-    
+   
     @media (min-width: 768px) {
       .info-card {
         padding: 2rem;
       }
     }
-
     .info-card h3 {
       margin-bottom: 1.5rem;
       font-size: 1.3rem;
       color: var(--text);
     }
-
     .contact-details {
       margin-bottom: 1.5rem;
     }
-
     .contact-item {
       display: flex;
       align-items: flex-start;
       margin-bottom: 1rem;
     }
-
     .contact-item i {
       margin-right: 1rem;
       font-size: 1.2rem;
       color: var(--button);
       min-width: 20px;
     }
-
     .contact-item div {
       flex: 1;
     }
-
     .contact-item h4 {
       margin-bottom: 0.3rem;
       font-size: 1rem;
     }
-
     .contact-item p, .contact-item a {
       color: var(--text);
       text-decoration: none;
       font-size: 0.95rem;
       word-break: break-word;
     }
-
     .social-links {
       display: flex;
       gap: 1rem;
       margin-top: 1.5rem;
       flex-wrap: wrap;
     }
-
     .social-links a {
       color: var(--text);
       font-size: 1.5rem;
       transition: color 0.3s ease;
     }
-
     .social-links a:hover {
       color: var(--button-hover);
     }
-
     .hours-card {
       background-color: var(--bg-teal);
       padding: 1.5rem;
       border-radius: 10px;
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
     }
-    
+   
     @media (min-width: 768px) {
       .hours-card {
         padding: 2rem;
       }
     }
-
     .hours-card h3 {
       margin-bottom: 1.5rem;
       font-size: 1.3rem;
       color: var(--text);
     }
-
     .hours-item {
       display: flex;
       justify-content: space-between;
@@ -337,40 +301,34 @@
       flex-wrap: wrap;
       gap: 5px;
     }
-
     .hours-item:last-child {
       border-bottom: none;
     }
-
     .hours-item span:first-child {
       font-weight: 600;
     }
-
     .map-section {
       padding: 0 5% 3rem;
       background-color: var(--card-bg);
     }
-
     .map-container {
       height: 300px;
       border-radius: 10px;
       overflow: hidden;
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
     }
-    
+   
     @media (min-width: 768px) {
       .map-container {
         height: 400px;
       }
     }
-
     .map-container iframe {
       width: 100%;
       height: 100%;
       border: none;
     }
-
-    /* Video container styles - 16:9 aspect ratio */
+    /* === SAME RESPONSIVE VIDEO PLAYER FROM HOME PAGE === */
     .video-container {
       position: relative;
       padding-bottom: 56.25%; /* 16:9 ratio */
@@ -382,7 +340,6 @@
       border-radius: 12px;
       box-shadow: 0 8px 32px rgba(0,0,0,0.3);
     }
-
     .video-container iframe {
       position: absolute;
       top: 0;
@@ -391,7 +348,6 @@
       height: 100%;
       border: none;
     }
-
     .video-section {
       margin-top: 3rem;
       background-color: var(--bg-teal);
@@ -399,44 +355,38 @@
       border-radius: 10px;
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
     }
-    
+   
     @media (min-width: 768px) {
       .video-section {
         padding: 2rem;
       }
     }
-
     .video-title {
       text-align: center;
       margin-bottom: 1.5rem;
       font-size: 1.3rem;
       color: var(--text);
     }
-
     .video-description {
       text-align: center;
       margin-bottom: 1.5rem;
       color: var(--text);
       font-size: 1rem;
     }
-
     .faq-section {
       padding: 3rem 5%;
       background-color: var(--bg-teal);
     }
-
     .faq-container {
       max-width: 800px;
       margin: 0 auto;
     }
-
     .faq-item {
       margin-bottom: 1rem;
       border-radius: 5px;
       overflow: hidden;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
-
     .faq-question {
       background-color: var(--card-bg);
       padding: 1rem;
@@ -448,27 +398,23 @@
       transition: background-color 0.3s ease;
       font-size: 1rem;
     }
-    
+   
     @media (min-width: 768px) {
       .faq-question {
         padding: 1.2rem;
       }
     }
-
     .faq-question:hover {
       background-color: var(--bg-teal);
     }
-
     .faq-question::after {
       content: '+';
       font-size: 1.5rem;
       transition: transform 0.3s ease;
     }
-
     .faq-question.active::after {
       content: '-';
     }
-
     .faq-answer {
       background-color: var(--card-bg);
       padding: 0 1rem;
@@ -477,12 +423,10 @@
       transition: max-height 0.3s ease, padding 0.3s ease;
       font-size: 0.95rem;
     }
-
     .faq-answer.active {
       padding: 1rem;
       max-height: 500px;
     }
-
     .button-placeholder {
       width: 80%;
       max-width: 200px;
@@ -497,20 +441,18 @@
       font-weight: 600;
       letter-spacing: 0.5px;
       font-size: 1rem;
+      display: block;
     }
-
     .button-placeholder:hover {
       background-color: var(--button-hover);
       transform: scale(1.05);
     }
-
     footer {
       background-color: var(--footer-bg);
       color: var(--footer-text);
       padding: 3rem 5%;
       text-align: center;
     }
-
     .footer-content {
       max-width: 1200px;
       margin: 0 auto;
@@ -519,13 +461,12 @@
       justify-content: space-between;
       gap: 2rem;
     }
-
     .footer-column {
       flex: 1;
       min-width: 200px;
       text-align: left;
     }
-    
+   
     @media (max-width: 600px) {
       .footer-column {
         min-width: 100%;
@@ -535,42 +476,48 @@
         justify-content: center;
       }
     }
-
     .footer-column h3 {
       margin-bottom: 1.5rem;
       font-size: 1.2rem;
       color: white;
     }
-
     .footer-column ul {
       list-style: none;
     }
-
     .footer-column ul li {
       margin-bottom: 0.8rem;
     }
-
     .footer-column ul li a {
       color: var(--footer-text);
       text-decoration: none;
       transition: color 0.3s ease;
     }
-
     .footer-column ul li a:hover {
       color: white;
     }
-
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+    .social-links a {
+      color: var(--footer-text);
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+    .social-links a:hover {
+      color: white;
+    }
     .copyright {
       margin-top: 2rem;
       padding-top: 1.5rem;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
-
     @media (max-width: 900px) {
       .hamburger {
         display: block;
       }
-
       .nav-links {
         position: fixed;
         top: 70px;
@@ -584,7 +531,6 @@
         transition: left 0.3s ease;
         z-index: 999;
       }
-
       .nav-links.active {
         left: 0;
       }
@@ -662,7 +608,7 @@
             <a href="https://teatroibisco.blogspot.com/"><i class="fa-solid fa-blog"></i></a>
           </div>
         </div>
-        
+       
         <div class="hours-card">
           <h3>Horários</h3>
           <div class="hours-item">
@@ -687,8 +633,8 @@
     <div class="map-container">
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3110.748942693492!2d-9.13310872416402!3d38.81758847169449!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd192d96265e034b%3A0xfd5722b065b3669b!2sYour%20Location!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
     </div>
-    
-    <!-- New Video Section - Updated with the requested video player -->
+   
+    <!-- Video Section - using the SAME player as home page -->
     <div class="video-section">
       <h3 class="video-title">
         <i class="fas fa-directions" style="margin-right: 5px;"></i>
@@ -698,10 +644,11 @@
         Veja este vídeo para ver o percurso exato até ao nosso teatro a partir da estrada principal.
       </p>
       <div class="video-container">
-        <iframe 
-          src="https://drive.google.com/file/d/1JBpb7-9QqkrqvqL9PQ26PKNAAS40XOk9/preview"
+        <iframe
+          src="https://drive.google.com/file/d/1JBpb7-9QqkrqvqL9PQ26PKNAAS40XOk9/preview?usp=sharing"
           allowfullscreen
-          allow="autoplay; encrypted-media">
+          allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy">
         </iframe>
       </div>
     </div>
@@ -784,61 +731,57 @@
     document.addEventListener('DOMContentLoaded', function() {
       const hamburger = document.getElementById('hamburger');
       const navLinks = document.getElementById('navLinks');
-      
+     
       hamburger.addEventListener('click', () => {
         navLinks.classList.toggle('active');
-        hamburger.innerHTML = navLinks.classList.contains('active') ? 
+        hamburger.innerHTML = navLinks.classList.contains('active') ?
           '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
       });
-
       document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => {
           navLinks.classList.remove('active');
           hamburger.innerHTML = '<i class="fas fa-bars"></i>';
         });
       });
-
       const themeToggle = document.getElementById('themeToggle');
       const body = document.body;
-      
+     
       const currentTheme = localStorage.getItem('theme');
       if (currentTheme === 'dark') {
         body.classList.add('dark-mode');
         themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
       }
-      
+     
       themeToggle.addEventListener('click', () => {
         body.classList.toggle('dark-mode');
         const isDark = body.classList.contains('dark-mode');
         themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
       });
-
       const faqQuestions = document.querySelectorAll('.faq-question');
-      
+     
       faqQuestions.forEach(question => {
         question.addEventListener('click', () => {
           const answer = question.nextElementSibling;
           const isActive = question.classList.contains('active');
-          
+         
           document.querySelectorAll('.faq-question').forEach(q => {
             if (q !== question) {
               q.classList.remove('active');
               q.nextElementSibling.classList.remove('active');
             }
           });
-          
+         
           question.classList.toggle('active');
           answer.classList.toggle('active');
         });
       });
-
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
           e.preventDefault();
           const targetId = this.getAttribute('href');
           if (targetId === '#') return;
-          
+         
           const targetElement = document.querySelector(targetId);
           if (targetElement) {
             window.scrollTo({
