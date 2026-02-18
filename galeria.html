@@ -21,7 +21,6 @@
       --footer-bg: #333;
       --footer-text: #ddd;
     }
-
     .dark-mode {
       --about-bg: #333;
       --carousel-bg: #333;
@@ -37,13 +36,11 @@
       --footer-bg: #111;
       --footer-text: #bbb;
     }
-
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: var(--bg-teal);
@@ -53,7 +50,6 @@
       overflow-x: hidden;
       width: 100%;
     }
-
     header {
       position: fixed;
       top: 0;
@@ -65,7 +61,6 @@
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       transition: background-color 0.3s ease;
     }
-
     nav {
       display: flex;
       justify-content: space-between;
@@ -76,7 +71,6 @@
       position: relative;
       flex-wrap: wrap;
     }
-
     .logo {
       font-size: 1.2rem;
       font-weight: 700;
@@ -86,12 +80,12 @@
       align-items: center;
       max-width: 70%;
     }
-    
+   
     .logo img {
       height: 35px;
       margin-right: 8px;
     }
-    
+   
     @media (max-width: 768px) {
       .logo {
         font-size: 0.9rem;
@@ -101,25 +95,22 @@
         height: 28px;
       }
     }
-
     .nav-links {
       display: flex;
       list-style: none;
       margin: 0;
       padding: 0;
     }
-
     .nav-links li {
       margin-left: 1.5rem;
     }
-    
+   
     @media (max-width: 900px) {
       .nav-links li {
         margin-left: 0;
         margin: 1rem 0;
       }
     }
-
     .nav-links a {
       color: var(--text);
       text-decoration: none;
@@ -128,11 +119,9 @@
       position: relative;
       font-size: 1rem;
     }
-
     .nav-links a:hover {
       color: var(--button-hover);
     }
-
     .nav-links a::after {
       content: '';
       position: absolute;
@@ -143,11 +132,9 @@
       background-color: var(--button-hover);
       transition: width 0.3s ease;
     }
-
     .nav-links a:hover::after {
       width: 100%;
     }
-
     .theme-toggle {
       background: none;
       border: none;
@@ -157,11 +144,9 @@
       margin-left: 1rem;
       transition: transform 0.3s ease;
     }
-
     .theme-toggle:hover {
       transform: scale(1.1);
     }
-
     .hamburger {
       display: none;
       cursor: pointer;
@@ -170,7 +155,6 @@
       color: var(--text);
       font-size: 1.5rem;
     }
-
     .hero {
       height: 50vh;
       min-height: 350px;
@@ -187,12 +171,10 @@
       overflow: hidden;
       width: 100%;
     }
-
     .dark-mode .hero {
       background: linear-gradient(rgba(51, 51, 51, 0.7), rgba(51, 51, 51, 0.7)), url('TeatroIbiscoTodoBranco.png') center no-repeat;
       background-size: contain;
     }
-
     .hero-content {
       max-width: 900px;
       position: relative;
@@ -200,30 +182,25 @@
       width: 100%;
       padding: 0 15px;
     }
-
     .hero h1 {
       font-size: clamp(1.8rem, 5vw, 3rem);
       margin-bottom: 1rem;
       text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
     }
-
     .hero p {
       font-size: clamp(1rem, 3vw, 1.2rem);
       text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
     }
-
     .gallery-section {
       padding: 3rem 5%;
       background-color: var(--card-bg);
     }
-
     .section-title {
       text-align: center;
       margin-bottom: 2rem;
       font-size: clamp(1.5rem, 4vw, 2rem);
       color: var(--text);
     }
-
     .gallery-filter {
       display: flex;
       justify-content: center;
@@ -232,7 +209,6 @@
       margin-bottom: 2rem;
       padding: 0 10px;
     }
-
     .filter-btn {
       padding: 0.5rem 1rem;
       background-color: var(--button);
@@ -243,31 +219,28 @@
       cursor: pointer;
       transition: all 0.3s ease;
     }
-    
+   
     @media (min-width: 768px) {
       .filter-btn {
         padding: 0.5rem 1.5rem;
         font-size: 1rem;
       }
     }
-
     .filter-btn:hover, .filter-btn.active {
       background-color: var(--button-hover);
       transform: translateY(-2px);
     }
-
     .gallery-container {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 15px;
     }
-    
+   
     @media (max-width: 600px) {
       .gallery-container {
         grid-template-columns: 1fr;
       }
     }
-
     .gallery-item {
       position: relative;
       border-radius: 8px;
@@ -277,19 +250,16 @@
       aspect-ratio: 16/9;
       cursor: pointer;
     }
-
     .gallery-item:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     }
-
     .gallery-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
-
     .gallery-item .video-icon {
       position: absolute;
       top: 50%;
@@ -301,13 +271,12 @@
       text-shadow: 0 0 10px rgba(0,0,0,0.5);
       pointer-events: none;
     }
-    
+   
     @media (min-width: 768px) {
       .gallery-item .video-icon {
         font-size: 3rem;
       }
     }
-
     .gallery-item .item-caption {
       position: absolute;
       bottom: 0;
@@ -320,11 +289,9 @@
       transition: transform 0.3s ease;
       font-size: 0.9rem;
     }
-
     .gallery-item:hover .item-caption {
       transform: translateY(0);
     }
-
     .button-placeholder {
       width: 80%;
       max-width: 200px;
@@ -341,13 +308,11 @@
       font-size: 1rem;
       display: block;
     }
-
     .button-placeholder:hover {
       background-color: var(--button-hover);
       transform: scale(1.05);
     }
-
-    /* Modal styles */
+    /* Modal styles - improved for mobile */
     .media-modal {
       position: fixed;
       top: 0;
@@ -361,158 +326,64 @@
       z-index: 9999;
       padding: 20px;
     }
-    
+   
     .modal-content {
-      background: #1a1a1a;
-      border-radius: 12px;
+      position: relative;
       width: 100%;
-      max-width: 900px;
-      max-height: 90vh;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 20px;
-      background: #2a2a2a;
-      color: white;
-    }
-    
-    .modal-header h3 {
-      font-size: 1.1rem;
-      margin: 0;
-    }
-    
-    .close-btn {
-      color: white;
-      font-size: 1.8rem;
-      cursor: pointer;
-      line-height: 1;
-      width: 36px;
-      height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255,255,255,0.1);
-      border-radius: 50%;
-    }
-    
-    .modal-body {
-      flex: 1;
-      overflow: auto;
-      background: #000;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    /* Video container */
-    .video-container {
-      width: 100%;
-      background: #000;
+      height: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 300px;
     }
-    
-    .video-container video {
-      width: 100%;
-      height: auto;
-      max-height: 60vh;
-      object-fit: contain;
-    }
-    
-    .video-actions {
-      display: flex;
-      gap: 10px;
-      padding: 15px 20px;
-      background: #2a2a2a;
-      flex-wrap: wrap;
-    }
-    
-    .video-actions a {
-      flex: 1;
-      min-width: 140px;
-      background: var(--button);
-      color: white;
-      text-decoration: none;
-      padding: 12px 20px;
-      border-radius: 8px;
-      font-size: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      border: none;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    
-    .video-actions a:hover {
-      background: var(--button-hover);
-    }
-    
-    .video-actions .fullscreen-btn {
-      flex: 1;
-      min-width: 140px;
-      background: #444;
-      color: white;
-      padding: 12px 20px;
-      border-radius: 8px;
-      font-size: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      border: none;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    
-    .video-actions .fullscreen-btn:hover {
-      background: #555;
-    }
-    
-    /* Image container */
-    .image-container {
-      width: 100%;
-      min-height: 400px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-    
-    .image-container img {
+   
+    .modal-content.video-content {
       max-width: 100%;
-      max-height: 70vh;
+    }
+   
+    .modal-content.image-content img {
+      max-width: 100%;
+      max-height: 80vh;
       object-fit: contain;
     }
-    
-    /* Error state */
-    .error-container {
+   
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
       color: white;
-      text-align: center;
-      padding: 40px;
+      font-size: 2rem;
+      cursor: pointer;
+      z-index: 10000;
+      width: 40px;
+      height: 40px;
+      background: rgba(0,0,0,0.5);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
     }
-    
-    .error-container i {
-      font-size: 3rem;
-      margin-bottom: 20px;
-      color: #ff6b6b;
+   
+    /* Video player styles - same as in contacto.html */
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 ratio */
+      height: 0;
+      overflow: hidden;
+      max-width: 100%;
+      background: #000;
+      margin: 2rem auto;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
     }
-    
-    .error-message {
-      background: #ff6b6b;
-      color: white;
-      padding: 15px;
-      border-radius: 8px;
-      margin: 20px;
-      text-align: center;
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
     }
 
     footer {
@@ -521,7 +392,6 @@
       padding: 3rem 5%;
       text-align: center;
     }
-
     .footer-content {
       max-width: 1200px;
       margin: 0 auto;
@@ -530,13 +400,12 @@
       justify-content: space-between;
       gap: 2rem;
     }
-
     .footer-column {
       flex: 1;
       min-width: 200px;
       text-align: left;
     }
-    
+   
     @media (max-width: 600px) {
       .footer-column {
         min-width: 100%;
@@ -546,59 +415,48 @@
         justify-content: center;
       }
     }
-
     .footer-column h3 {
       margin-bottom: 1.5rem;
       font-size: 1.2rem;
       color: white;
     }
-
     .footer-column ul {
       list-style: none;
     }
-
     .footer-column ul li {
       margin-bottom: 0.8rem;
     }
-
     .footer-column ul li a {
       color: var(--footer-text);
       text-decoration: none;
       transition: color 0.3s ease;
     }
-
     .footer-column ul li a:hover {
       color: white;
     }
-
     .social-links {
       display: flex;
       gap: 1rem;
       margin-top: 1rem;
       flex-wrap: wrap;
     }
-
     .social-links a {
       color: var(--footer-text);
       font-size: 1.5rem;
       transition: color 0.3s ease;
     }
-
     .social-links a:hover {
       color: white;
     }
-
     .copyright {
       margin-top: 2rem;
       padding-top: 1.5rem;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
-
     @media (max-width: 900px) {
       .hamburger {
         display: block;
       }
-
       .nav-links {
         position: fixed;
         top: 70px;
@@ -612,30 +470,25 @@
         transition: left 0.3s ease;
         z-index: 999;
       }
-
       .nav-links.active {
         left: 0;
       }
     }
-    
+   
+    /* Loading spinner */
     .loading-spinner {
       border: 4px solid rgba(255,255,255,0.3);
       border-radius: 50%;
       border-top: 4px solid white;
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
       animation: spin 1s linear infinite;
-      margin: 40px auto;
+      margin: 20px auto;
     }
-    
+   
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
-    }
-    
-    /* Alternative link for when video fails */
-    .video-fallback {
-      display: none;
     }
   </style>
 </head>
@@ -665,17 +518,15 @@
       </div>
     </nav>
   </header>
-
   <section class="hero">
     <div class="hero-content">
       <h1>Our Gallery</h1>
       <p>Explore momentos das nossas apresentações, bastidores e eventos especiais.</p>
     </div>
   </section>
-
   <section class="gallery-section">
     <h2 class="section-title">Memorable Moments</h2>
-    
+   
     <div class="gallery-filter">
       <button class="filter-btn active" data-filter="all">Tudo</button>
       <button class="filter-btn" data-filter="performance">Performances</button>
@@ -683,10 +534,9 @@
       <button class="filter-btn" data-filter="pictures">Fotos</button>
       <button class="filter-btn" data-filter="video">Videos</button>
     </div>
-    
+   
     <div class="gallery-container" id="galleryContainer"></div>
   </section>
-
   <footer id="contact">
     <div class="footer-content">
       <div class="footer-column">
@@ -735,188 +585,169 @@
       <p>&copy; 2025 Teatro Ibisco. All rights reserved.</p>
     </div>
   </footer>
-
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const hamburger = document.getElementById('hamburger');
       const navLinks = document.getElementById('navLinks');
-      
+     
       hamburger.addEventListener('click', () => {
         navLinks.classList.toggle('active');
-        hamburger.innerHTML = navLinks.classList.contains('active') ? 
+        hamburger.innerHTML = navLinks.classList.contains('active') ?
           '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
       });
-
       document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => {
           navLinks.classList.remove('active');
           hamburger.innerHTML = '<i class="fas fa-bars"></i>';
         });
       });
-
       const themeToggle = document.getElementById('themeToggle');
       const body = document.body;
-      
+     
       const currentTheme = localStorage.getItem('theme');
       if (currentTheme === 'dark') {
         body.classList.add('dark-mode');
         themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
       }
-      
+     
       themeToggle.addEventListener('click', () => {
         body.classList.toggle('dark-mode');
         const isDark = body.classList.contains('dark-mode');
         themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
       });
-
       const galleryContainer = document.getElementById('galleryContainer');
       const filterButtons = document.querySelectorAll('.filter-btn');
-
-      // Media items with proper Google Drive streaming links
+      // Function to extract Google Drive file ID from URL
+      function getGoogleDriveId(url) {
+        const match = url.match(/[-\w]{25,}/);
+        return match ? match[0] : null;
+      }
+      // Function to get direct download URL for Google Drive
+      function getDirectDriveUrl(fileId) {
+        return `https://drive.google.com/uc?export=download&id=${fileId}`;
+      }
+      // Function to check if device is mobile
+      function isMobile() {
+        return window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      }
       const mediaItems = [
         {
           type: 'video',
           category: 'performance',
-          // Using the proper streaming URL format
-          videoUrl: 'https://drive.google.com/uc?export=download&id=1zbb53rAukTS0ZId94rONhzETlzQoiNJ3',
-          thumbnail: 'https://drive.google.com/thumbnail?id=1zbb53rAukTS0ZId94rONhzETlzQoiNJ3&sz=w500',
-          caption: 'Performance Video 1',
-          fileId: '1zbb53rAukTS0ZId94rONhzETlzQoiNJ3'
+          driveId: '1zbb53rAukTS0ZId94rONhzETlzQoiNJ3',
+          caption: 'Example 2'
         },
         {
           type: 'image',
           category: 'pictures',
           url: 'https://drive.google.com/thumbnail?id=1FYpykYB5C3n-j7sdUkozWy9WI9-u0aYd&sz=w1000',
           thumbnail: 'https://drive.google.com/thumbnail?id=1FYpykYB5C3n-j7sdUkozWy9WI9-u0aYd&sz=w500',
-          caption: 'Photo 1'
+          caption: 'Example 3'
         },
         {
           type: 'video',
           category: 'video',
-          videoUrl: 'https://drive.google.com/uc?export=download&id=1cm8nfg0ee0Qd95_Ju_lU9AtAxUCCRsec',
-          thumbnail: 'https://drive.google.com/thumbnail?id=1cm8nfg0ee0Qd95_Ju_lU9AtAxUCCRsec&sz=w500',
-          caption: 'Video 1',
-          fileId: '1cm8nfg0ee0Qd95_Ju_lU9AtAxUCCRsec'
+          driveId: '1cm8nfg0ee0Qd95_Ju_lU9AtAxUCCRsec',
+          caption: 'Example 2'
         },
         {
           type: 'video',
           category: 'video',
-          videoUrl: 'https://drive.google.com/uc?export=download&id=171fNyGuw2P20nTJIbS8NmFzTM6Gg9Ttq',
-          thumbnail: 'https://drive.google.com/thumbnail?id=171fNyGuw2P20nTJIbS8NmFzTM6Gg9Ttq&sz=w500',
-          caption: 'Video 2',
-          fileId: '171fNyGuw2P20nTJIbS8NmFzTM6Gg9Ttq'
+          driveId: '171fNyGuw2P20nTJIbS8NmFzTM6Gg9Ttq',
+          caption: 'Example 3'
         },
         {
           type: 'video',
           category: 'video',
-          videoUrl: 'https://drive.google.com/uc?export=download&id=1cRylB2yVB_iN4YrDjT9fb_DM2O3N63zi',
-          thumbnail: 'https://drive.google.com/thumbnail?id=1cRylB2yVB_iN4YrDjT9fb_DM2O3N63zi&sz=w500',
-          caption: 'Video 3',
-          fileId: '1cRylB2yVB_iN4YrDjT9fb_DM2O3N63zi'
+          driveId: '1cRylB2yVB_iN4YrDjT9fb_DM2O3N63zi',
+          caption: 'Example 4'
         },
         {
           type: 'video',
           category: 'video',
-          videoUrl: 'https://drive.google.com/uc?export=download&id=1EAfwwX3rMRuOAwiWJWZa2N_JvG1Hm0V8',
-          thumbnail: 'https://drive.google.com/thumbnail?id=1EAfwwX3rMRuOAwiWJWZa2N_JvG1Hm0V8&sz=w500',
-          caption: 'Video 4',
-          fileId: '1EAfwwX3rMRuOAwiWJWZa2N_JvG1Hm0V8'
+          driveId: '1EAfwwX3rMRuOAwiWJWZa2N_JvG1Hm0V8',
+          caption: 'Example 5'
         },
         {
           type: 'video',
           category: 'video',
-          videoUrl: 'https://drive.google.com/uc?export=download&id=130AiG6TwQZDYnLFgW15EQVqkwPtkZiSd',
-          thumbnail: 'https://drive.google.com/thumbnail?id=130AiG6TwQZDYnLFgW15EQVqkwPtkZiSd&sz=w500',
-          caption: 'Video 5',
-          fileId: '130AiG6TwQZDYnLFgW15EQVqkwPtkZiSd'
+          driveId: '130AiG6TwQZDYnLFgW15EQVqkwPtkZiSd',
+          caption: 'Example 6'
         },
         {
           type: 'video',
           category: 'video',
-          videoUrl: 'https://drive.google.com/uc?export=download&id=1j5f4yflFOotcKz-5ylaZKrtwvHLarkdP',
-          thumbnail: 'https://drive.google.com/thumbnail?id=1j5f4yflFOotcKz-5ylaZKrtwvHLarkdP&sz=w500',
-          caption: 'Video 6',
-          fileId: '1j5f4yflFOotcKz-5ylaZKrtwvHLarkdP'
+          driveId: '1j5f4yflFOotcKz-5ylaZKrtwvHLarkdP',
+          caption: 'Example 7'
         },
         {
           type: 'video',
           category: 'video',
-          videoUrl: 'https://drive.google.com/uc?export=download&id=1XNzA4WyaAtVXjIWhi2BsoIfrfRMRlF0L',
-          thumbnail: 'https://drive.google.com/thumbnail?id=1XNzA4WyaAtVXjIWhi2BsoIfrfRMRlF0L&sz=w500',
-          caption: 'Video 7',
-          fileId: '1XNzA4WyaAtVXjIWhi2BsoIfrfRMRlF0L'
+          driveId: '1XNzA4WyaAtVXjIWhi2BsoIfrfRMRlF0L',
+          caption: 'Example 8'
         },
         {
           type: 'video',
           category: 'video',
-          videoUrl: 'https://drive.google.com/uc?export=download&id=1QPpx0bWEDpzrThRl5V0k6HJuOPxbmGXZ',
-          thumbnail: 'https://drive.google.com/thumbnail?id=1QPpx0bWEDpzrThRl5V0k6HJuOPxbmGXZ&sz=w500',
-          caption: 'Video 8',
-          fileId: '1QPpx0bWEDpzrThRl5V0k6HJuOPxbmGXZ'
+          driveId: '1QPpx0bWEDpzrThRl5V0k6HJuOPxbmGXZ',
+          caption: 'Example 9'
         },
         {
           type: 'video',
           category: 'video',
-          videoUrl: 'https://drive.google.com/uc?export=download&id=1HBDKVh4MWdWAIuhYqq0bCWTPIFj_zgre',
-          thumbnail: 'https://drive.google.com/thumbnail?id=1HBDKVh4MWdWAIuhYqq0bCWTPIFj_zgre&sz=w500',
-          caption: 'Video 9',
-          fileId: '1HBDKVh4MWdWAIuhYqq0bCWTPIFj_zgre'
+          driveId: '1HBDKVh4MWdWAIuhYqq0bCWTPIFj_zgre',
+          caption: 'Example 10'
         },
         {
           type: 'video',
           category: 'video',
-          videoUrl: 'https://drive.google.com/uc?export=download&id=1iBNFJeQEilwfuzUnvf7W9_D_XzvqOwFL',
-          thumbnail: 'https://drive.google.com/thumbnail?id=1iBNFJeQEilwfuzUnvf7W9_D_XzvqOwFL&sz=w500',
-          caption: 'Video 10',
-          fileId: '1iBNFJeQEilwfuzUnvf7W9_D_XzvqOwFL'
+          driveId: '1iBNFJeQEilwfuzUnvf7W9_D_XzvqOwFL',
+          caption: 'Example 10'
         },
         {
           type: 'video',
           category: 'video',
-          videoUrl: 'https://drive.google.com/uc?export=download&id=16YwyaKSfwBV9M9kVGQvFMv21K_kjrIuR',
-          thumbnail: 'https://drive.google.com/thumbnail?id=16YwyaKSfwBV9M9kVGQvFMv21K_kjrIuR&sz=w500',
-          caption: 'Video 11',
-          fileId: '16YwyaKSfwBV9M9kVGQvFMv21K_kjrIuR'
+          driveId: '16YwyaKSfwBV9M9kVGQvFMv21K_kjrIuR',
+          caption: 'Example 11'
         },
         {
           type: 'video',
           category: 'video',
-          videoUrl: 'https://drive.google.com/uc?export=download&id=1M4ynpTrUtroftxQh3YU4OzYBaBh8fkjD',
-          thumbnail: 'https://drive.google.com/thumbnail?id=1M4ynpTrUtroftxQh3YU4OzYBaBh8fkjD&sz=w500',
-          caption: 'Video 12',
-          fileId: '1M4ynpTrUtroftxQh3YU4OzYBaBh8fkjD'
+          driveId: '1M4ynpTrUtroftxQh3YU4OzYBaBh8fkjD',
+          caption: 'Example 11'
         },
         {
           type: 'image',
           category: 'events',
           url: 'https://drive.google.com/thumbnail?id=1M-y2Nh8k3cWVQRTZcHnMLub4QWuViNP7&sz=w1000',
           thumbnail: 'https://drive.google.com/thumbnail?id=1M-y2Nh8k3cWVQRTZcHnMLub4QWuViNP7&sz=w500',
-          caption: 'Event Photo 1'
+          caption: 'Example 4'
         },
         {
           type: 'image',
           category: 'events',
           url: 'https://drive.google.com/thumbnail?id=1lb1KLfgQupyUZPfNyRgTUyaCb3DXg04a&sz=w1000',
           thumbnail: 'https://drive.google.com/thumbnail?id=1lb1KLfgQupyUZPfNyRgTUyaCb3DXg04a&sz=w500',
-          caption: 'Event Photo 2'
+          caption: 'Example 5'
         }
       ];
-
       function generateGalleryItems(items) {
         galleryContainer.innerHTML = '';
-        
+       
         items.forEach(item => {
           const galleryItem = document.createElement('div');
           galleryItem.className = `gallery-item ${item.category}`;
-          
+         
           if (item.type === 'video') {
+            const thumbnailUrl = item.thumbnail || `https://drive.google.com/thumbnail?id=${item.driveId}&sz=w500`;
+           
             galleryItem.innerHTML = `
-              <img src="${item.thumbnail}" alt="${item.caption}" loading="lazy">
+              <img src="${thumbnailUrl}" alt="${item.caption}" loading="lazy">
               <i class="fas fa-play video-icon"></i>
               <div class="item-caption">${item.caption}</div>
             `;
-            
+           
             galleryItem.addEventListener('click', function() {
               openVideoModal(item);
             });
@@ -926,138 +757,93 @@
               <img src="${item.thumbnail}" alt="${item.caption}" loading="lazy">
               <div class="item-caption">${item.caption}</div>
             `;
-            
+           
             galleryItem.addEventListener('click', function() {
               openImageModal(item);
             });
           }
-          
+         
           galleryContainer.appendChild(galleryItem);
         });
       }
-
       function openVideoModal(item) {
         const modal = document.createElement('div');
         modal.className = 'media-modal';
-        
-        // Create a direct download link and streaming link
-        const directLink = `https://drive.google.com/uc?export=download&id=${item.fileId}`;
-        const streamingLink = `https://drive.google.com/uc?export=view&id=${item.fileId}`;
-        
+       
+        const embedUrl = `https://drive.google.com/file/d/${item.driveId}/preview`;
+       
         modal.innerHTML = `
-          <div class="modal-content">
-            <div class="modal-header">
-              <h3>${item.caption}</h3>
-              <span class="close-btn">&times;</span>
-            </div>
-            <div class="modal-body">
-              <div class="video-container">
-                <video controls preload="metadata" playsinline webkit-playsinline x5-playsinline>
-                  <source src="${directLink}" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-              <div class="video-actions">
-                <a href="${directLink}" download target="_blank">
-                  <i class="fas fa-download"></i> Download Video
-                </a>
-                <button class="fullscreen-btn" onclick="this.previousElementSibling.previousElementSibling.previousElementSibling.querySelector('video').requestFullscreen()">
-                  <i class="fas fa-expand"></i> Fullscreen
-                </button>
-              </div>
+          <div class="modal-content video-content">
+            <span class="close-btn">&times;</span>
+            <div class="video-container">
+              <iframe 
+                src="${embedUrl}"
+                allowfullscreen
+                allow="autoplay; encrypted-media">
+              </iframe>
             </div>
           </div>
         `;
-        
+       
         document.body.appendChild(modal);
-        
+       
         const closeBtn = modal.querySelector('.close-btn');
-        const video = modal.querySelector('video');
-        
-        // Handle video loading errors
-        video.addEventListener('error', function() {
-          const videoContainer = this.parentElement;
-          videoContainer.innerHTML = `
-            <div class="error-container">
-              <i class="fas fa-exclamation-triangle"></i>
-              <p>Video failed to load. Try downloading it instead.</p>
-              <a href="${directLink}" download style="color: white; text-decoration: underline; margin-top: 10px; display: block;">
-                Click here to download
-              </a>
-            </div>
-          `;
-        });
-        
         closeBtn.addEventListener('click', () => {
-          video.pause();
           document.body.removeChild(modal);
         });
-        
+       
         modal.addEventListener('click', (e) => {
           if (e.target === modal) {
-            video.pause();
             document.body.removeChild(modal);
           }
         });
       }
-
       function openImageModal(item) {
         const modal = document.createElement('div');
         modal.className = 'media-modal';
-        
+       
         modal.innerHTML = `
-          <div class="modal-content">
-            <div class="modal-header">
-              <h3>${item.caption}</h3>
-              <span class="close-btn">&times;</span>
-            </div>
-            <div class="modal-body">
-              <div class="image-container">
-                <img src="${item.url}" alt="${item.caption}" loading="lazy">
-              </div>
-            </div>
+          <div class="modal-content image-content">
+            <span class="close-btn">&times;</span>
+            <img src="${item.url}" alt="${item.caption}">
           </div>
         `;
-        
+       
         document.body.appendChild(modal);
-        
+       
         const closeBtn = modal.querySelector('.close-btn');
-        
         closeBtn.addEventListener('click', () => {
           document.body.removeChild(modal);
         });
-        
+       
         modal.addEventListener('click', (e) => {
           if (e.target === modal) {
             document.body.removeChild(modal);
           }
         });
       }
-
       filterButtons.forEach(button => {
         button.addEventListener('click', function() {
           filterButtons.forEach(btn => btn.classList.remove('active'));
           this.classList.add('active');
-          
+         
           const filter = this.dataset.filter;
           let filteredItems = mediaItems;
-          
+         
           if (filter !== 'all') {
             filteredItems = mediaItems.filter(item => item.category === filter);
           }
-          
+         
           generateGalleryItems(filteredItems);
         });
       });
-
       generateGalleryItems(mediaItems);
-
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
           e.preventDefault();
           const targetId = this.getAttribute('href');
           if (targetId === '#') return;
-          
+         
           const targetElement = document.querySelector(targetId);
           if (targetElement) {
             window.scrollTo({
@@ -1066,6 +852,11 @@
             });
           }
         });
+      });
+     
+      // Handle resize events
+      window.addEventListener('resize', function() {
+        // Regenerate if needed
       });
     });
   </script>
