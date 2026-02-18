@@ -1,0 +1,1019 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us | Teatro Ibisco</title>
+  <link rel="icon" type="image/png" href="Images/TeatroIbiscoFlor.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      --about-bg: #f5f5f5; /* light gray/white for light mode */
+      --carousel-bg: #fff; /* white for light mode */
+      --bg-teal: #ffffff;
+      --gray: #ccc;
+      --dark-gray: #ffffff;
+      --card-bg: #d4d2d2;
+      --text: #333;
+      --button: #666;
+      --button-hover: #555;
+      --nav-bg: rgba(255, 255, 255, 0.9);
+      --hero-text: #fff;
+      --footer-bg: #333;
+      --footer-text: #ddd;
+    }
+
+    /* Dark mode variables */
+    .dark-mode {
+      --about-bg: #333; /* dark gray/black for dark mode */
+      --carousel-bg: #333; /* black for dark mode */
+      --bg-teal: #1a1919;
+      --gray: #555;
+      --dark-gray: #222;
+      --card-bg: #333;
+      --text: #eee;
+      --button: #555;
+      --button-hover: #666;
+      --nav-bg: rgba(51, 51, 51, 0.9);
+      --hero-text: #eee;
+      --footer-bg: #111;
+      --footer-text: #bbb;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+form input,
+form textarea,
+form select {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid var(--gray);
+  border-radius: 5px;
+  background-color: var(--card-bg);
+  color: var(--text);
+  font-family: inherit;
+  transition: border-color 0.3s ease;
+}
+
+/* Special override for newsletter input */
+form input.newsletter-input {
+  padding: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+  border-radius: 4px !important;
+  border: 1px solid #555 !important;
+  background-color: white !important;
+  color: #333 !important;
+}
+
+form input.newsletter-input::placeholder {
+  color: #666 !important;
+  opacity: 0.7 !important;
+}
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg-teal);
+      color: var(--text);
+      transition: background 0.3s ease, color 0.3s ease;
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: var(--nav-bg);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-links li {
+      margin-left: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--button-hover);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: var(--button-hover);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.2rem;
+      cursor: pointer;
+      margin-left: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.1);
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.5rem;
+    }
+
+    /* Hero Section */
+/* Hero Section */
+.contact-hero {
+  height: 60vh;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 5%;
+  margin-top: 55px;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url('images/TeatroIbiscoSemFundo.png') center no-repeat;
+  background-size: contain;
+  color: var(--hero-text);
+  position: relative;
+  overflow: hidden;
+}
+
+.dark-mode .contact-hero {
+  background:
+    linear-gradient(rgba(51, 51, 51, 0.7), rgba(51, 51, 51, 0.7)),
+    url('images/TeatroIbiscoTodoBranco.png') center no-repeat;
+  background-size: contain;
+}
+
+
+    .contact-hero::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 0;
+    }
+
+    .contact-hero-content {
+      max-width: 900px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+      line-height: 1.2;
+    }
+
+    .contact-hero p {
+      font-size: 1.4rem;
+      margin-bottom: 3rem;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      padding: 4rem 5%;
+      background-color: var(--card-bg);
+    }
+
+    .contact-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .contact-info {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .contact-form {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      color: var(--text);
+    }
+
+    .info-card {
+      background-color: var(--bg-teal);
+      padding: 2rem;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .info-card h3 {
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+      color: var(--text);
+    }
+
+    .contact-details {
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+
+    .contact-item i {
+      margin-right: 1rem;
+      font-size: 1.2rem;
+      color: var(--button);
+    }
+
+    .contact-item div {
+      flex: 1;
+    }
+
+    .contact-item h4 {
+      margin-bottom: 0.3rem;
+      font-size: 1.1rem;
+    }
+
+    .contact-item p, .contact-item a {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .contact-item a:hover {
+      color: var(--button-hover);
+      text-decoration: underline;
+    }
+
+    .social-media {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-media a {
+      color: var(--text);
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .social-media a:hover {
+      color: var(--button-hover);
+    }
+
+    .hours-card {
+      background-color: var(--bg-teal);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .hours-card h3 {
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+      color: var(--text);
+    }
+
+    .hours-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.8rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .hours-item:last-child {
+      border-bottom: none;
+    }
+
+    .hours-item span:first-child {
+      font-weight: 600;
+    }
+
+    form {
+      background-color: var(--bg-teal);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    form label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    form input,
+    form textarea,
+    form select {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid var(--gray);
+      border-radius: 5px;
+      background-color: var(--card-bg);
+      color: var(--text);
+      font-family: inherit;
+      transition: border-color 0.3s ease;
+    }
+
+    form input:focus,
+    form textarea:focus,
+    form select:focus {
+      outline: none;
+      border-color: var(--button);
+    }
+
+    form textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      background-color: var(--button);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      width: 100%;
+    }
+
+    .submit-btn:hover {
+      background-color: var(--button-hover);
+      transform: translateY(-2px);
+    }
+
+    /* Map Section */
+    .map-section {
+      padding: 0 5% 4rem;
+      background-color: var(--card-bg);
+    }
+
+    .map-container {
+      height: 400px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      padding: 4rem 5%;
+      background-color: var(--bg-teal);
+    }
+
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      margin-bottom: 1rem;
+      border-radius: 5px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .faq-question {
+      background-color: var(--card-bg);
+      padding: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    .faq-question:hover {
+      background-color: var(--bg-teal);
+    }
+
+    .faq-question::after {
+      content: '+';
+      font-size: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-question.active::after {
+      content: '-';
+    }
+
+    .faq-answer {
+      background-color: var(--card-bg);
+      padding: 0 1.2rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .faq-answer.active {
+      padding: 1.2rem;
+      max-height: 500px;
+    }
+
+        .button-placeholder {
+      width: 80%;
+      height: 40px;
+      margin: 0 auto 20px;
+      background-color: var(--button);
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      color: white;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .button-placeholder:hover {
+      background-color: var(--button-hover);
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--footer-bg);
+      color: var(--footer-text);
+      padding: 3rem 5%;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .footer-column {
+      flex: 1;
+      min-width: 200px;
+      text-align: left;
+    }
+
+    .footer-column h3 {
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+      color: white;
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-column ul li a {
+      color: var(--footer-text);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-column ul li a:hover {
+      color: white;
+    }
+
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: flex-start;
+      margin-top: 1rem;
+    }
+
+
+    .social-links a {
+      color: var(--footer-text);
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: white;
+    }
+
+    .copyright {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 900px) {
+      .hamburger {
+        display: block;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background-color: var(--nav-bg);
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 0;
+        transition: left 0.3s ease;
+      }
+
+      .nav-links.active {
+        left: 0;
+      }
+
+      .nav-links li {
+        margin: 1rem 0;
+      }
+
+      .contact-hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .contact-hero p {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .contact-hero {
+        height: 50vh;
+        min-height: 400px;
+      }
+
+      .contact-hero h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+<header>
+  <nav>
+<a href="#" class="logo" style="position: absolute; left: 50px; font-size: 25px;">
+  <img src="images/TeatroIbiscoFlor.png" alt="#" style="height: 45px; vertical-align: middle; margin-right: 10px;">
+  Teatro Inter-Bairros para a Inclusão Social e Cultura do Otimismo
+</a>
+    <!-- This pushes everything after it to the right -->
+    <div style="float: right;">
+      <button class="hamburger" id="hamburger">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul class="nav-links" id="navLinks" style="display: inline-block; margin: 0; padding: 0;">
+        <li style="display: inline-block; margin-left: 790px;"><a href="index.html">Home</a></li>
+        <li style="display: inline-block; margin-left: 20px;"><a href="about.html">About</a></li>
+        <li style="display: inline-block; margin-left: 20px;"><a href="galeria.html">Galeria</a></li>
+        <li style="display: inline-block; margin-left: 20px;"><a href="events.html">Eventos</a></li>
+        <li style="display: inline-block; margin-left: 20px;"><a href="contacto.html">Contacto</a></li>
+        <li style="display: inline-block; margin-left: 20px;">
+          <button class="theme-toggle" id="themeToggle">
+            <i class="fas fa-moon"></i>
+          </button>
+        </li>
+      </ul>
+    </div>
+    
+    <!-- This clearfix prevents layout issues -->
+    <div style="clear: both;"></div>
+  </nav>
+</header>
+
+  <!-- Hero Section -->
+  <section class="contact-hero">
+    <div class="contact-hero-content">
+      <h1>Contate-nos</h1>
+      <p>Adoraríamos saber a sua opinião! Entre em contacto para tirar dúvidas, enviar feedback ou saber mais sobre os nossos próximos eventos.</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <h2 class="section-title">Entre em contacto</h2>
+    <div class="contact-container">
+      <div class="contact-info">
+        <div class="info-card">
+          <h3>Informações de contacto</h3>
+          <div class="contact-details">
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <div>
+                <h4>Endereço</h4>
+                <p>Travessa Henrique Barbosa
+Apelação, Loures 2680‑2725</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone-alt"></i>
+              <div>
+                <h4>Número</h4>
+                <p><a>+351 933 411 897</a></p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <div>
+                <h4>Email</h4>
+                <p><a>teatroibisco@gmail.com</a></p>
+              </div>
+            </div>
+          </div>
+        <div class="social-links">
+          <a href="https://www.facebook.com/profile.php?id=100064446172518"><i class="fab fa-facebook"></i></a>
+          <a href="https://pt.linkedin.com/in/teatro-ibisco-associa%C3%A7%C3%A3o-36b24292"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.instagram.com/teatroibisco"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.youtube.com/@IbiscoOrg/featured"><i class="fab fa-youtube"></i></a>
+          <a href="https://teatroibisco.blogspot.com/"><i class="fa-solid fa-blog"></i></a>
+        </div>
+        </div>
+        
+        <div class="hours-card">
+          <h3>Horários</h3>
+          <div class="hours-item">
+            <span>Ensaios | Quarta-Feira</span>
+            <span>10:00 AM - 18:00 PM</span>
+          </div>
+          <div class="hours-item">
+            <span>Atendimento | Quarta Feira</span>
+            <span>10:00 AM - 20:00 PM</span>
+          </div>
+          <div class="hours-item">
+            <span>Atendimento | Segunda-Feira á Domingo</span>
+            <span>10:00 AM - 17:00 PM</span>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Map Section -->
+<section class="map-section">
+    <h2 class="section-title">Encontre-nos</h2>
+    <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3110.748942693492!2d-9.13310872416402!3d38.81758847169449!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd192d96265e034b%3A0xfd5722b065b3669b!2sYour%20Location!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    
+    <!-- New Video Section -->
+    <div class="video-container" style="margin-top: 3rem; background-color: var(--bg-teal); padding: 2rem; border-radius: 5px; box-shadow: 0 6px 10px rgba(0, 0, 0, 0.06);">
+        <h3 class="section-title" style="font-size: 1.5rem; margin-bottom: 1.5rem; text-align: center;">
+            <i class="fas fa-directions" style="margin-right: 5px;"></i>
+            Como chegar aqui: siga este caminho
+        </h3>
+        <p style="text-align: center; margin-bottom: 1.5rem; color: var(--text);">
+            Veja este vídeo para ver o percurso exato até ao nosso teatro a partir da estrada principal.
+        </p>
+        <div style="position: relative; padding-bottom: 42.25%; height: 0; overflow: hidden; border-radius: 8px; max-width: 800px; margin: 0 auto;">
+            <video controls style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                <source src="images/Localizacao.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+</section>
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <h2 class="section-title">Perguntas Frequentes</h2>
+    <div class="faq-container">
+      <div class="faq-item">
+        <div class="faq-question">
+          How can I purchase tickets?
+        </div>
+        <div class="faq-answer">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          What is your refund policy?
+        </div>
+        <div class="faq-answer">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          Do you offer group discounts?
+        </div>
+        <div class="faq-answer">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          Is the theater accessible?
+        </div>
+        <div class="faq-answer">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          Can I rent the theater for private events?
+        </div>
+        <div class="faq-answer">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>Teatro Ibisco</h3>
+        <p>IBISCO – Travessa Henrique Barbosa<br>
+        Apelação, Loures 2680‑2725<br>
+        Número: +351 933 411 897<br>
+        Email: teatroibisco@gmail.com</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/profile.php?id=100064446172518"><i class="fab fa-facebook"></i></a>
+          <a href="https://pt.linkedin.com/in/teatro-ibisco-associa%C3%A7%C3%A3o-36b24292"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.instagram.com/teatroibisco"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.youtube.com/@IbiscoOrg/featured"><i class="fab fa-youtube"></i></a>
+          <a href="https://teatroibisco.blogspot.com/"><i class="fa-solid fa-blog"></i></a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h3>Links Rápidos</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#about">Sobre Nós</a></li>
+          <li><a href="galeria.html">Galeria</a></li>
+          <li><a href="events.html">Eventos</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="#">Donate</a></li>
+          <li><a href="#">Volunteer</a></li>
+          <li><a href="#">Membership</a></li>
+          <li><a href="#">Corporate Sponsorship</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Boletim Informativo</h3>
+        <p>Subscreva para receber atualizações sobre próximos eventos e ofertas especiais.</p>
+          <input type="email" placeholder="Your email" style="width: 100%; padding: 0.5rem; margin-bottom: 0.5rem; border-radius: 4px; border: 1px solid #555;">
+          <button type="submit" class="button-placeholder" style="width: 100%; margin: 0;">Subscribe</button>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Teatro Ibisco. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Navigation toggle for mobile
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.innerHTML = navLinks.classList.contains('active') ? 
+          '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+      });
+
+      // Close mobile menu when clicking a link
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('active');
+          hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+        });
+      });
+
+      // Dark mode toggle
+      const themeToggle = document.getElementById('themeToggle');
+      const body = document.body;
+      
+      // Check for saved theme preference
+      const currentTheme = localStorage.getItem('theme');
+      if (currentTheme === 'dark') {
+        body.classList.add('dark-mode');
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+      }
+      
+      themeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        const isDark = body.classList.contains('dark-mode');
+        themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      });
+      
+      
+      // FAQ functionality
+      const faqQuestions = document.querySelectorAll('.faq-question');
+      
+      faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+          const answer = question.nextElementSibling;
+          const isActive = question.classList.contains('active');
+          
+          // Close all other FAQs
+          document.querySelectorAll('.faq-question').forEach(q => {
+            if (q !== question) {
+              q.classList.remove('active');
+              q.nextElementSibling.classList.remove('active');
+            }
+          });
+          
+          // Toggle current FAQ
+          question.classList.toggle('active');
+          answer.classList.toggle('active');
+        });
+      });
+
+      // Carousel functionality
+      const slidesContainer = document.querySelector('.carousel-slides');
+      const slides = document.querySelectorAll('.slide');
+      const dots = document.querySelectorAll('.dot');
+      const prevBtn = document.querySelector('.arrow.left');
+      const nextBtn = document.querySelector('.arrow.right');
+      let currentIndex = 0;
+      let slideInterval;
+
+      // Initialize carousel
+      function initCarousel() {
+        updateCarousel();
+        startAutoSlide();
+      }
+
+      // Update carousel position
+      function updateCarousel() {
+        slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+        
+        // Update dots
+        dots.forEach((dot, index) => {
+          dot.innerHTML = index === currentIndex ? '&#9679;' : '&#9675;';
+        });
+      }
+
+      // Go to specific slide
+      function goToSlide(index) {
+        currentIndex = index;
+        updateCarousel();
+      }
+
+      // Next slide
+      function nextSlide() {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateCarousel();
+      }
+
+      // Previous slide
+      function prevSlide() {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateCarousel();
+      }
+
+      // Start auto sliding
+      function startAutoSlide() {
+        slideInterval = setInterval(nextSlide, 5000); // Change every 5 seconds
+      }
+
+      // Stop auto sliding
+      function stopAutoSlide() {
+        clearInterval(slideInterval);
+      }
+
+      // Event listeners
+      nextBtn.addEventListener('click', () => {
+        stopAutoSlide();
+        nextSlide();
+        startAutoSlide();
+      });
+
+      prevBtn.addEventListener('click', () => {
+        stopAutoSlide();
+        prevSlide();
+        startAutoSlide();
+      });
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          stopAutoSlide();
+          goToSlide(index);
+          startAutoSlide();
+        });
+      });
+
+      // Pause on hover
+      const carousel = document.querySelector('.carousel-container');
+      carousel.addEventListener('mouseenter', stopAutoSlide);
+      carousel.addEventListener('mouseleave', startAutoSlide);
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 70,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+
+      // Initialize
+      initCarousel();
+    });
+  </script>
+</body>
+</html>

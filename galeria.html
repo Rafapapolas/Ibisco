@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery | Teatro Ibisco</title>
+  <link rel="icon" type="image/png" href="Images/TeatroIbiscoFlor.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      --about-bg: #f5f5f5; /* light gray/white for light mode */
+      --carousel-bg: #fff; /* white for light mode */
+      --gray: #ccc;
+      --dark-gray: #ffffff;
+      --card-bg: #fff;
+      --text: #333;
+      --button: #666;
+      --button-hover: #555;
+      --nav-bg: rgba(255, 255, 255, 0.9);
+      --hero-text: #fff;
+      --footer-bg: #333;
+      --footer-text: #ddd;
+    }
+
+    /* Dark mode variables */
+    .dark-mode {
+      --about-bg: #333; /* dark gray/black for dark mode */
+      --carousel-bg: #333; /* black for dark mode */
+      --bg-teal: #000000;
+      --gray: #555;
+      --dark-gray: #222;
+      --card-bg: #333;
+      --text: #eee;
+      --button: #555;
+      --button-hover: #666;
+      --nav-bg: rgba(51, 51, 51, 0.9);
+      --hero-text: #eee;
+      --footer-bg: #111;
+      --footer-text: #bbb;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg-teal);
+      color: var(--text);
+      transition: background 0.3s ease, color 0.3s ease;
+      line-height: 1.6;
+    }
+
+    .hero::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+}
+
+.hero-content {
+  max-width: 900px;
+  position: relative;
+  z-index: 1;
+  transform: translateY(-5%);
+}
+
+.hero h1 {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+  line-height: 1.2;
+}
+
+.hero p {
+  font-size: 1.4rem;
+  margin-bottom: 3rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-btn {
+  padding: 1rem 2.5rem;
+  background-color: var(--button);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: 0.5s;
+}
+
+.hero-btn:hover {
+  background-color: var(--button-hover);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+}
+
+.hero-btn:hover::before {
+  left: 100%;
+}
+
+
+
+    /* Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: var(--nav-bg);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-links li {
+      margin-left: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--button-hover);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: var(--button-hover);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .dark-mode .hero {
+      background: linear-gradient(rgba(51, 51, 51, 0.7), rgba(51, 51, 51, 0.7)), 
+                  url('Images/TeatroIbiscoTodoBranco.png') center/cover no-repeat;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.2rem;
+      cursor: pointer;
+      margin-left: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.1);
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.5rem;
+    }
+
+    /* Hero Section - Fixed background image */
+.hero {
+  height: 60vh;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 5%;
+  margin-top: 58px;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url('images/TeatroIbiscoSemFundo.png') center no-repeat;
+  background-size: contain;
+  color: var(--hero-text);
+  position: relative;
+  overflow: hidden;
+}
+
+.dark-mode .hero {
+  background:
+    linear-gradient(rgba(51, 51, 51, 0.7), rgba(51, 51, 51, 0.7)),
+    url('images/TeatroIbiscoTodoBranco.png') center no-repeat;
+  background-size: contain;
+}
+
+    .gallery-hero::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 0;
+    }
+
+    .gallery-hero-content {
+      max-width: 900px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .gallery-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+      line-height: 1.2;
+    }
+
+    .gallery-hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Gallery Section */
+    .gallery-section {
+      padding: 4rem 5%;
+      background-color: var(--card-bg);
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      color: var(--text);
+    }
+
+    .gallery-filter {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 2rem;
+    }
+
+    .filter-btn {
+      padding: 0.5rem 1.5rem;
+      background-color: var(--button);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background-color: var(--button-hover);
+      transform: translateY(-2px);
+    }
+
+    .gallery-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      aspect-ratio: 16/9;
+      cursor: pointer;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-item .video-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 3rem;
+      opacity: 0.8;
+      text-shadow: 0 0 10px rgba(0,0,0,0.5);
+      pointer-events: none;
+    }
+
+    .gallery-item .item-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      color: white;
+      padding: 1rem;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover .item-caption {
+      transform: translateY(0);
+    }
+
+        .button-placeholder {
+      width: 80%;
+      height: 40px;
+      margin: 0 auto 20px;
+      background-color: var(--button);
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      color: white;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .button-placeholder:hover {
+      background-color: var(--button-hover);
+      transform: scale(1.05);
+    }
+
+    /* Video Modal */
+    .video-modal, .image-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    
+    .video-modal iframe {
+      width: 80%;
+      height: 80%;
+      border: none;
+    }
+    
+    .image-modal img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+    }
+    
+    .video-modal .close-btn, .image-modal .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--footer-bg);
+      color: var(--footer-text);
+      padding: 3rem 5%;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .footer-column {
+      flex: 1;
+      min-width: 200px;
+      text-align: left;
+    }
+
+    .footer-column h3 {
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+      color: white;
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-column ul li a {
+      color: var(--footer-text);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-column ul li a:hover {
+      color: white;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      color: var(--footer-text);
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: white;
+    }
+
+    .copyright {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 900px) {
+      .hamburger {
+        display: block;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background-color: var(--nav-bg);
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 0;
+        transition: left 0.3s ease;
+      }
+
+      .nav-links.active {
+        left: 0;
+      }
+
+      .nav-links li {
+        margin: 1rem 0;
+      }
+
+      .gallery-hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .gallery-hero p {
+        font-size: 1rem;
+      }
+
+      .gallery-container {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      }
+      
+      .video-modal iframe, .image-modal img {
+        width: 95%;
+        height: auto;
+        max-height: 60%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .gallery-hero {
+        height: 50vh;
+        min-height: 300px;
+      }
+
+      .gallery-hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .gallery-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+<header>
+  <nav>
+<a href="index.html" class="logo" style="position: absolute; left: 50px; font-size: 25px;">
+  <img src="images/TeatroIbiscoFlor.png" alt="#" style="height: 45px; vertical-align: middle; margin-right: 10px;">
+  Teatro Inter-Bairros para a Inclusão Social e Cultura do Otimismo
+</a>
+    <!-- This pushes everything after it to the right -->
+    <div style="float: right;">
+      <button class="hamburger" id="hamburger">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul class="nav-links" id="navLinks" style="display: inline-block; margin: 0; padding: 0;">
+        <li style="display: inline-block; margin-left: 790px;"><a href="index.html">Home</a></li>
+        <li style="display: inline-block; margin-left: 20px;"><a href="about.html">About</a></li>
+        <li style="display: inline-block; margin-left: 20px;"><a href="galeria.html">Galeria</a></li>
+        <li style="display: inline-block; margin-left: 20px;"><a href="events.html">Eventos</a></li>
+        <li style="display: inline-block; margin-left: 20px;"><a href="contacto.html">Contacto</a></li>
+        <li style="display: inline-block; margin-left: 20px;">
+          <button class="theme-toggle" id="themeToggle">
+            <i class="fas fa-moon"></i>
+          </button>
+        </li>
+      </ul>
+    </div>
+    
+    <!-- This clearfix prevents layout issues -->
+    <div style="clear: both;"></div>
+  </nav>
+</header>
+
+  <!-- Hero Section -->
+<section class="hero gallery-hero">
+  <div class="hero-content">
+    <h1>Our Gallery</h1>
+    <p>Explore momentos das nossas apresentações, bastidores e eventos especiais.</p>
+  </div>
+</section>
+
+  <!-- Gallery Section -->
+  <section class="gallery-section">
+    <h2 class="section-title">Memorable Moments</h2>
+    
+    <div class="gallery-filter">
+      <button class="filter-btn active" data-filter="all">Tudo</button>
+      <button class="filter-btn" data-filter="performance">Performances</button>
+      <button class="filter-btn" data-filter="events">Eventos Especiais</button>
+      <button class="filter-btn" data-filter="pictures">Fotos</button>
+      <button class="filter-btn" data-filter="video">Videos</button>
+    </div>
+    
+    <div class="gallery-container" id="galleryContainer">
+      <!-- Media items will be loaded here dynamically -->
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>Teatro Ibisco</h3>
+        <p>IBISCO – Travessa Henrique Barbosa<br>
+        Apelação, Loures 2680‑2725<br>
+        Número: +351 933 411 897<br>
+        Email: teatroibisco@gmail.com</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/profile.php?id=100064446172518"><i class="fab fa-facebook"></i></a>
+          <a href="https://pt.linkedin.com/in/teatro-ibisco-associa%C3%A7%C3%A3o-36b24292"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.instagram.com/teatroibisco"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.youtube.com/@IbiscoOrg/featured"><i class="fab fa-youtube"></i></a>
+          <a href="https://teatroibisco.blogspot.com/"><i class="fa-solid fa-blog"></i></a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h3>Links Rápidos</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#about">Sobre Nós</a></li>
+          <li><a href="galeria.html">Galeria</a></li>
+          <li><a href="events.html">Eventos</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="#">Donate</a></li>
+          <li><a href="#">Volunteer</a></li>
+          <li><a href="#">Membership</a></li>
+          <li><a href="#">Corporate Sponsorship</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Boletim Informativo</h3>
+        <p>Subscreva para receber atualizações sobre próximos eventos e ofertas especiais.</p>
+        <form>
+          <input type="email" placeholder="Your email" style="width: 100%; padding: 0.5rem; margin-bottom: 0.5rem; border-radius: 4px; border: 1px solid #555;">
+          <button type="submit" class="button-placeholder" style="width: 100%; margin: 0;">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Teatro Ibisco. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Navigation toggle for mobile
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.innerHTML = navLinks.classList.contains('active') ? 
+          '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+      });
+
+      // Close mobile menu when clicking a link
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('active');
+          hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+        });
+      });
+
+      // Dark mode toggle
+      const themeToggle = document.getElementById('themeToggle');
+      const body = document.body;
+      
+      // Check for saved theme preference
+      const currentTheme = localStorage.getItem('theme');
+      if (currentTheme === 'dark') {
+        body.classList.add('dark-mode');
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+      }
+      
+      themeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        const isDark = body.classList.contains('dark-mode');
+        themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      });
+
+      // Gallery Functionality
+      const galleryContainer = document.getElementById('galleryContainer');
+      const filterButtons = document.querySelectorAll('.filter-btn');
+
+      // Sample media items - replace with your actual content
+      const mediaItems = [
+        // Videos
+
+        {
+          type: 'video',
+          category: 'performance',
+          previewUrl: 'https://drive.google.com/file/d/1zbb53rAukTS0ZId94rONhzETlzQoiNJ3/preview?autoplay=1',
+          downloadUrl: 'https://drive.google.com/uc?export=download&id=1zbb53rAukTS0ZId94rONhzETlzQoiNJ3',
+          thumbnail: 'https://drive.google.com/thumbnail?id=1zbb53rAukTS0ZId94rONhzETlzQoiNJ3&sz=w500',
+          caption: 'Example 2'
+        },
+        
+        // Images
+        {
+          type: 'image',
+          category: 'pictures',
+          url: 'https://drive.google.com/thumbnail?id=1FYpykYB5C3n-j7sdUkozWy9WI9-u0aYd&sz=w1000',
+          thumbnail: 'https://drive.google.com/thumbnail?id=1FYpykYB5C3n-j7sdUkozWy9WI9-u0aYd&sz=w500',
+          caption: 'Example 3'
+        },
+
+        {
+          type: 'video',
+          category: 'video',
+          previewUrl: 'https://drive.google.com/file/d/1cm8nfg0ee0Qd95_Ju_lU9AtAxUCCRsec/preview?autoplay=1',
+          downloadUrl: 'https://drive.google.com/uc?export=download&id=1cm8nfg0ee0Qd95_Ju_lU9AtAxUCCRsec',
+          thumbnail: 'https://drive.google.com/thumbnail?id=1cm8nfg0ee0Qd95_Ju_lU9AtAxUCCRsec&sz=w500',
+          caption: 'Example 2'
+        },
+
+                {
+          type: 'video',
+          category: 'video',
+          previewUrl: 'https://drive.google.com/file/d/171fNyGuw2P20nTJIbS8NmFzTM6Gg9Ttq/preview?autoplay=1',
+          downloadUrl: 'https://drive.google.com/uc?export=download&id=171fNyGuw2P20nTJIbS8NmFzTM6Gg9Ttq',
+          thumbnail: 'https://drive.google.com/thumbnail?id=171fNyGuw2P20nTJIbS8NmFzTM6Gg9Ttq&sz=w500',
+          caption: 'Example 3'
+        },
+
+                {
+          type: 'video',
+          category: 'video',
+          previewUrl: 'https://drive.google.com/file/d/1cRylB2yVB_iN4YrDjT9fb_DM2O3N63zi/preview?autoplay=1',
+          downloadUrl: 'https://drive.google.com/uc?export=download&id=1cRylB2yVB_iN4YrDjT9fb_DM2O3N63zi',
+          thumbnail: 'https://drive.google.com/thumbnail?id=1cRylB2yVB_iN4YrDjT9fb_DM2O3N63zi&sz=w500',
+          caption: 'Example 4'
+        },
+        
+                {
+          type: 'video',
+          category: 'video',
+          previewUrl: 'https://drive.google.com/file/d/1EAfwwX3rMRuOAwiWJWZa2N_JvG1Hm0V8/preview?autoplay=1',
+          downloadUrl: 'https://drive.google.com/uc?export=download&id=1EAfwwX3rMRuOAwiWJWZa2N_JvG1Hm0V8',
+          thumbnail: 'https://drive.google.com/thumbnail?id=1EAfwwX3rMRuOAwiWJWZa2N_JvG1Hm0V8&sz=w500',
+          caption: 'Example 5'
+        },
+        
+                {
+          type: 'video',
+          category: 'video',
+          previewUrl: 'https://drive.google.com/file/d/130AiG6TwQZDYnLFgW15EQVqkwPtkZiSd/preview?autoplay=1',
+          downloadUrl: 'https://drive.google.com/uc?export=download&id=130AiG6TwQZDYnLFgW15EQVqkwPtkZiSd',
+          thumbnail: 'https://drive.google.com/thumbnail?id=130AiG6TwQZDYnLFgW15EQVqkwPtkZiSd&sz=w500',
+          caption: 'Example 6'
+        },
+        
+                {
+          type: 'video',
+          category: 'video',
+          previewUrl: 'https://drive.google.com/file/d/1j5f4yflFOotcKz-5ylaZKrtwvHLarkdP/preview?autoplay=1',
+          downloadUrl: 'https://drive.google.com/uc?export=download&id=1j5f4yflFOotcKz-5ylaZKrtwvHLarkdP',
+          thumbnail: 'https://drive.google.com/thumbnail?id=1j5f4yflFOotcKz-5ylaZKrtwvHLarkdP&sz=w500',
+          caption: 'Example 7'
+        },
+        
+                {
+          type: 'video',
+          category: 'video',
+          previewUrl: 'https://drive.google.com/file/d/1XNzA4WyaAtVXjIWhi2BsoIfrfRMRlF0L/preview?autoplay=1',
+          downloadUrl: 'https://drive.google.com/uc?export=download&id=1XNzA4WyaAtVXjIWhi2BsoIfrfRMRlF0LP',
+          thumbnail: 'https://drive.google.com/thumbnail?id=1XNzA4WyaAtVXjIWhi2BsoIfrfRMRlF0L&sz=w500',
+          caption: 'Example 8'
+        },
+        
+                {
+          type: 'video',
+          category: 'video',
+          previewUrl: 'https://drive.google.com/file/d/1QPpx0bWEDpzrThRl5V0k6HJuOPxbmGXZ/preview?autoplay=1',
+          downloadUrl: 'https://drive.google.com/uc?export=download&id=1QPpx0bWEDpzrThRl5V0k6HJuOPxbmGXZ',
+          thumbnail: 'https://drive.google.com/thumbnail?id=1QPpx0bWEDpzrThRl5V0k6HJuOPxbmGXZ&sz=w500',
+          caption: 'Example 9'
+        },
+        
+                {
+          type: 'video',
+          category: 'video',
+          previewUrl: 'https://drive.google.com/file/d/1HBDKVh4MWdWAIuhYqq0bCWTPIFj_zgre/preview?autoplay=1',
+          downloadUrl: 'https://drive.google.com/uc?export=download&id=1HBDKVh4MWdWAIuhYqq0bCWTPIFj_zgre',
+          thumbnail: 'https://drive.google.com/thumbnail?id=1HBDKVh4MWdWAIuhYqq0bCWTPIFj_zgre&sz=w500',
+          caption: 'Example 10'
+        },
+        
+                {
+          type: 'video',
+          category: 'video',
+          previewUrl: 'https://drive.google.com/file/d/1iBNFJeQEilwfuzUnvf7W9_D_XzvqOwFL/preview?autoplay=1',
+          downloadUrl: 'https://drive.google.com/uc?export=download&id=1iBNFJeQEilwfuzUnvf7W9_D_XzvqOwFL',
+          thumbnail: 'https://drive.google.com/thumbnail?id=1iBNFJeQEilwfuzUnvf7W9_D_XzvqOwFL&sz=w500',
+          caption: 'Example 10'
+        },
+
+                        {
+          type: 'video',
+          category: 'video',
+          previewUrl: 'https://drive.google.com/file/d/16YwyaKSfwBV9M9kVGQvFMv21K_kjrIuR/preview?autoplay=1',
+          downloadUrl: 'https://drive.google.com/uc?export=download&id=16YwyaKSfwBV9M9kVGQvFMv21K_kjrIuR',
+          thumbnail: 'https://drive.google.com/thumbnail?id=16YwyaKSfwBV9M9kVGQvFMv21K_kjrIuR&sz=w500',
+          caption: 'Example 11'
+        },
+                        {
+          type: 'video',
+          category: 'video',
+          previewUrl: 'https://drive.google.com/file/d/1M4ynpTrUtroftxQh3YU4OzYBaBh8fkjD/preview?autoplay=1',
+          downloadUrl: 'https://drive.google.com/uc?export=download&id=1M4ynpTrUtroftxQh3YU4OzYBaBh8fkjD',
+          thumbnail: 'https://drive.google.com/thumbnail?id=1M4ynpTrUtroftxQh3YU4OzYBaBh8fkjD&sz=w500',
+          caption: 'Example 11'
+        },
+
+        {
+          type: 'image',
+          category: 'events',
+          url: 'https://drive.google.com/thumbnail?id=1M-y2Nh8k3cWVQRTZcHnMLub4QWuViNP7&sz=w1000',
+          thumbnail: 'https://drive.google.com/thumbnail?id=1M-y2Nh8k3cWVQRTZcHnMLub4QWuViNP7&sz=w500',
+          caption: 'Example 4'
+        },
+        {
+          type: 'image',
+          category: 'events',
+          url: 'https://drive.google.com/thumbnail?id=1lb1KLfgQupyUZPfNyRgTUyaCb3DXg04a&sz=w1000',
+          thumbnail: 'https://drive.google.com/thumbnail?id=1lb1KLfgQupyUZPfNyRgTUyaCb3DXg04a&sz=w500',
+          caption: 'Example 5'
+        },
+      ];
+
+      function generateGalleryItems(items) {
+        galleryContainer.innerHTML = '';
+        
+        items.forEach(item => {
+          const galleryItem = document.createElement('div');
+          galleryItem.className = `gallery-item ${item.category}`;
+          
+          if (item.type === 'video') {
+            galleryItem.innerHTML = `
+              <img src="${item.thumbnail}" alt="${item.caption}" loading="lazy">
+              <i class="fas fa-play video-icon"></i>
+              <div class="item-caption">${item.caption}</div>
+            `;
+            
+            galleryItem.addEventListener('click', function(e) {
+              if (e.target.classList.contains('video-icon')) return;
+              
+              const modal = document.createElement('div');
+              modal.className = 'video-modal';
+              
+              // First try the preview URL with autoplay
+              const iframe = document.createElement('iframe');
+              iframe.src = item.previewUrl;
+              iframe.allow = 'autoplay; fullscreen';
+              iframe.allowfullscreen = true;
+              iframe.style.width = '80%';
+              iframe.style.height = '80%';
+              iframe.style.border = 'none';
+              
+              // Fallback to HTML5 video if iframe doesn't work
+              const fallbackVideo = document.createElement('video');
+              fallbackVideo.controls = true;
+              fallbackVideo.autoplay = true;
+              fallbackVideo.style.width = '80%';
+              fallbackVideo.style.height = '80%';
+              const source = document.createElement('source');
+              source.src = item.downloadUrl;
+              source.type = 'video/mp4';
+              fallbackVideo.appendChild(source);
+              
+              modal.innerHTML = `
+                <span class="close-btn">&times;</span>
+              `;
+              
+              // Try iframe first
+              modal.appendChild(iframe);
+              
+              // If iframe fails, replace with video element after 2 seconds
+              const fallbackTimer = setTimeout(() => {
+                if (!iframe.contentWindow || iframe.contentWindow.location.href === 'about:blank') {
+                  modal.removeChild(iframe);
+                  modal.appendChild(fallbackVideo);
+                }
+              }, 2000);
+              
+              // Close handlers
+              modal.querySelector('.close-btn').addEventListener('click', () => {
+                clearTimeout(fallbackTimer);
+                document.body.removeChild(modal);
+              });
+              
+              modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                  clearTimeout(fallbackTimer);
+                  document.body.removeChild(modal);
+                }
+              });
+              
+              document.body.appendChild(modal);
+            });
+          }
+          else if (item.type === 'image') {
+            galleryItem.innerHTML = `
+              <img src="${item.thumbnail}" alt="${item.caption}" loading="lazy">
+              <div class="item-caption">${item.caption}</div>
+            `;
+            
+            galleryItem.addEventListener('click', function() {
+              const modal = document.createElement('div');
+              modal.className = 'image-modal';
+              modal.innerHTML = `
+                <span class="close-btn">&times;</span>
+                <img src="${item.url}" alt="${item.caption}">
+              `;
+              
+              // Close handlers
+              modal.querySelector('.close-btn').addEventListener('click', () => {
+                document.body.removeChild(modal);
+              });
+              
+              modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                  document.body.removeChild(modal);
+                }
+              });
+              
+              document.body.appendChild(modal);
+            });
+          }
+          
+          galleryContainer.appendChild(galleryItem);
+        });
+      }
+
+      // Filter functionality
+      filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          this.classList.add('active');
+          
+          const filter = this.dataset.filter;
+          let filteredItems = mediaItems;
+          
+          if (filter !== 'all') {
+            filteredItems = mediaItems.filter(item => item.category === filter);
+          }
+          
+          generateGalleryItems(filteredItems);
+        });
+      });
+
+      // Initialize gallery
+      generateGalleryItems(mediaItems);
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 70,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

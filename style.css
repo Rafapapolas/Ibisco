@@ -1,0 +1,39 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--nav-bg);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+  padding: 0; /* Add this to remove default padding */
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative; /* Add this */
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+  position: absolute; /* Add this */
+  left: 5%; /* Add this - matches nav padding */
+  top: 50%; /* Add this */
+  transform: translateY(-50%); /* Add this */
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin-left: auto; /* Add this to push nav links to right */
+}
