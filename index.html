@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"/>
   <title>Teatro Ibisco</title>
   <link rel="icon" type="image/png" href="TeatroIbiscoFlor.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -16,7 +16,7 @@
       --text: #333;
       --button: #666;
       --button-hover: #555;
-      --nav-bg: rgba(255, 255, 255, 0.9);
+      --nav-bg: rgba(255, 255, 255, 0.95);
       --hero-text: #fff;
       --footer-bg: #333;
       --footer-text: #ddd;
@@ -24,7 +24,6 @@
       --comment-border: #e0e0e0;
     }
 
-    /* Dark mode */
     .dark-mode {
       --about-bg: #333; 
       --carousel-bg: #333; 
@@ -35,7 +34,7 @@
       --text: #eee;
       --button: #555;
       --button-hover: #666;
-      --nav-bg: rgba(51, 51, 51, 0.9);
+      --nav-bg: rgba(51, 51, 51, 0.95);
       --hero-text: #eee;
       --footer-bg: #111;
       --footer-text: #bbb;
@@ -55,9 +54,10 @@
       color: var(--text);
       transition: background 0.3s ease, color 0.3s ease;
       line-height: 1.6;
+      overflow-x: hidden;
+      width: 100%;
     }
 
-    /* Navigation */
     header {
       position: fixed;
       top: 0;
@@ -74,25 +74,54 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 5%;
+      padding: 0.8rem 5%;
       max-width: 1400px;
       margin: 0 auto;
+      position: relative;
+      flex-wrap: wrap;
     }
 
     .logo {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       font-weight: 700;
       color: var(--text);
       text-decoration: none;
+      display: flex;
+      align-items: center;
+      max-width: 70%;
+    }
+    
+    .logo img {
+      height: 35px;
+      margin-right: 8px;
+    }
+    
+    @media (max-width: 768px) {
+      .logo {
+        font-size: 0.9rem;
+        max-width: 60%;
+      }
+      .logo img {
+        height: 28px;
+      }
     }
 
     .nav-links {
       display: flex;
       list-style: none;
+      margin: 0;
+      padding: 0;
     }
 
     .nav-links li {
-      margin-left: 2rem;
+      margin-left: 1.5rem;
+    }
+    
+    @media (max-width: 900px) {
+      .nav-links li {
+        margin-left: 0;
+        margin: 1rem 0;
+      }
     }
 
     .nav-links a {
@@ -101,6 +130,7 @@
       font-weight: 500;
       transition: color 0.3s ease;
       position: relative;
+      font-size: 1rem;
     }
 
     .nav-links a:hover {
@@ -121,13 +151,6 @@
     .nav-links a:hover::after {
       width: 100%;
     }
-
-.dark-mode .hero {
-  background:
-    linear-gradient(rgba(51, 51, 51, 0.7), rgba(51, 51, 51, 0.7)),
-    url('TeatroIbiscoTodoBranco.png') center no-repeat;
-  background-size: contain;
-}
 
     .theme-toggle {
       background: none;
@@ -152,59 +175,46 @@
       font-size: 1.5rem;
     }
 
-    /* Hero Section */
-.hero {
-  height: 60vh;
-  min-height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 0 5%;
-  margin-top: 58px;
-  background:
-    linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url('TeatroIbiscoSemFundo.png') center no-repeat;
-  background-size: contain;
-  color: var(--hero-text);
-  position: relative;
-  overflow: hidden;
-}
-
-.dark-mode .hero {
-  background:
-    linear-gradient(rgba(51, 51, 51, 0.7), rgba(51, 51, 51, 0.7)),
-    url('TeatroIbiscoTodoBranco.png') center no-repeat;
-  background-size: contain;
-}
-
-    .hero::before {
-      position: absolute;
-      top: 0;
-      left: 0;
+    .hero {
+      height: 60vh;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 5%;
+      margin-top: 60px;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('TeatroIbiscoSemFundo.png') center no-repeat;
+      background-size: contain;
+      color: var(--hero-text);
+      position: relative;
+      overflow: hidden;
       width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.4);
-      z-index: 0;
+    }
+
+    .dark-mode .hero {
+      background: linear-gradient(rgba(51, 51, 51, 0.7), rgba(51, 51, 51, 0.7)), url('TeatroIbiscoTodoBranco.png') center no-repeat;
+      background-size: contain;
     }
 
     .hero-content {
       max-width: 900px;
       position: relative;
       z-index: 1;
-      transform: translateY(-5%);
+      width: 100%;
+      padding: 0 15px;
     }
 
     .hero h1 {
-      font-size: 4rem;
-      margin-bottom: 1.5rem;
+      font-size: clamp(1.8rem, 5vw, 4rem);
+      margin-bottom: 1rem;
       text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
       line-height: 1.2;
     }
 
     .hero p {
-      font-size: 1.4rem;
-      margin-bottom: 3rem;
+      font-size: clamp(1rem, 3vw, 1.4rem);
+      margin-bottom: 2rem;
       text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
       max-width: 700px;
       margin-left: auto;
@@ -212,56 +222,36 @@
     }
 
     .hero-btn {
-      padding: 1rem 2.5rem;
+      padding: 0.8rem 2rem;
       background-color: var(--button);
       color: white;
       border: none;
       border-radius: 50px;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 600;
       cursor: pointer;
-      transition: var(--transition);
+      transition: all 0.3s ease;
       text-transform: uppercase;
       letter-spacing: 1.5px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: 0.5s;
     }
 
     .hero-btn:hover {
       background-color: var(--button-hover);
-      transform: translateY(-5px);
-      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
     }
 
-    .hero-btn:hover::before {
-      left: 100%;
-    }
-
-    /* Main Content with Comments and Carousel */
     .main-content {
       display: flex;
       flex-wrap: wrap;
       gap: 30px;
-      padding: 4rem 5%;
+      padding: 3rem 5%;
       background-color: var(--card-bg);
     }
 
-    /* Comments Section - Left Side */
     .comments-section {
       flex: 1;
-      min-width: 300px;
-      max-width: 400px;
+      min-width: 280px;
     }
 
     .comments-title {
@@ -273,16 +263,12 @@
       gap: 10px;
     }
 
-    .comments-title i {
-      color: var(--button);
-    }
-
     .comments-container {
       background-color: var(--comment-bg);
       border: 1px solid var(--comment-border);
       border-radius: 10px;
       padding: 20px;
-      height: 500px;
+      height: 400px;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
@@ -304,6 +290,8 @@
       justify-content: space-between;
       margin-bottom: 8px;
       font-size: 0.9rem;
+      flex-wrap: wrap;
+      gap: 5px;
     }
 
     .comment-author {
@@ -342,13 +330,7 @@
       background-color: var(--card-bg);
       color: var(--text);
       font-family: inherit;
-      transition: border-color 0.3s ease;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-      outline: none;
-      border-color: var(--button);
+      font-size: 16px;
     }
 
     .form-group textarea {
@@ -364,36 +346,30 @@
       border-radius: 6px;
       cursor: pointer;
       font-weight: 600;
-      transition: background-color 0.3s ease, transform 0.2s ease;
+      transition: all 0.3s ease;
       width: 100%;
+      font-size: 1rem;
     }
 
     .comment-submit:hover {
       background-color: var(--button-hover);
-      transform: scale(1.02);
     }
 
-    /* Right Side - Carousel and Cards */
     .right-content {
       flex: 2;
-      min-width: 300px;
+      min-width: 280px;
     }
-
-.carousel-section {
-  background-color: var(--carousel-bg);
-}
 
     .section-title {
       text-align: center;
       margin-bottom: 2rem;
-      font-size: 2rem;
+      font-size: clamp(1.5rem, 4vw, 2rem);
       color: var(--text);
     }
 
     .carousel-container {
-      width: 90%;
-      max-width: 1000px;
-      height: 400px;
+      width: 100%;
+      height: 300px;
       background-color: var(--gray);
       margin: 0 auto 40px;
       position: relative;
@@ -403,11 +379,12 @@
       justify-content: center;
       overflow: hidden;
       box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-      transition: transform 0.3s ease;
     }
-
-    .carousel-container:hover {
-      transform: scale(1.01);
+    
+    @media (min-width: 768px) {
+      .carousel-container {
+        height: 400px;
+      }
     }
 
     .carousel-slides {
@@ -434,20 +411,28 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      font-size: 2.2rem;
+      font-size: 2rem;
       background: rgba(255, 255, 255, 0.7);
       border: none;
       color: #000000;
       cursor: pointer;
       border-radius: 50%;
-      width: 44px;
-      height: 44px;
+      width: 40px;
+      height: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: background 0.2s ease, transform 0.2s ease;
+      transition: all 0.2s ease;
       z-index: 10;
+    }
+    
+    @media (max-width: 480px) {
+      .arrow {
+        width: 35px;
+        height: 35px;
+        font-size: 1.5rem;
+      }
     }
 
     .arrow:hover {
@@ -456,11 +441,11 @@
     }
 
     .arrow.left {
-      left: 20px;
+      left: 10px;
     }
 
     .arrow.right {
-      right: 20px;
+      right: 10px;
     }
 
     .dots {
@@ -478,28 +463,24 @@
     .dot {
       cursor: pointer;
       transition: color 0.3s ease;
+      font-size: 14px;
     }
 
-    .dot.active {
-      color: white;
-    }
-
-    /* Cards Section */
     .card-section {
-      padding: 4rem 5%;
+      padding: 3rem 5%;
       background-color: var(--card-bg);
     }
 
     .cards-container {
       display: flex;
       justify-content: space-between;
-      gap: 24px;
+      gap: 20px;
       flex-wrap: wrap;
     }
 
     .card {
       flex: 1;
-      min-width: 280px;
+      min-width: 250px;
       background: var(--card-bg);
       border-radius: 10px;
       overflow: hidden;
@@ -509,9 +490,15 @@
       flex-direction: column;
       border: 1px solid rgba(0, 0, 0, 0.1);
     }
+    
+    @media (max-width: 600px) {
+      .card {
+        min-width: 100%;
+      }
+    }
 
     .card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-5px);
       box-shadow: 0 12px 24px rgba(0,0,0,0.15);
     }
 
@@ -554,10 +541,11 @@
       border: none;
       border-radius: 6px;
       cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease;
+      transition: all 0.3s ease;
       color: white;
       font-weight: 600;
       letter-spacing: 0.5px;
+      font-size: 1rem;
     }
 
     .button-placeholder:hover {
@@ -565,23 +553,28 @@
       transform: scale(1.05);
     }
 
-    /* About Section */
-.about-section {
-  padding: 4rem 5%;
-  background-color: var(--about-bg);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 2rem;
-  transition: background-color 0.3s ease;
-}
+    .about-section {
+      padding: 3rem 5%;
+      background-color: var(--about-bg);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+    }
+
     .about-image {
       flex: 1;
-      min-width: 300px;
-      height: 400px;
+      min-width: 250px;
+      height: 300px;
       border-radius: 10px;
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    @media (min-width: 768px) {
+      .about-image {
+        height: 400px;
+      }
     }
 
     .about-image img {
@@ -592,21 +585,15 @@
 
     .about-content {
       flex: 1;
-      min-width: 300px;
+      min-width: 250px;
     }
 
     .about-content h2 {
-      font-size: 2rem;
+      font-size: clamp(1.5rem, 4vw, 2rem);
       margin-bottom: 1rem;
       color: var(--text);
     }
 
-    .about-content p {
-      margin-bottom: 1.5rem;
-      color: var(--text);
-    }
-
-    /* Footer */
     footer {
       background-color: var(--footer-bg);
       color: var(--footer-text);
@@ -627,6 +614,16 @@
       flex: 1;
       min-width: 200px;
       text-align: left;
+    }
+    
+    @media (max-width: 600px) {
+      .footer-column {
+        min-width: 100%;
+        text-align: center;
+      }
+      .social-links {
+        justify-content: center;
+      }
     }
 
     .footer-column h3 {
@@ -656,8 +653,8 @@
     .social-links {
       display: flex;
       gap: 1rem;
-      justify-content: center;
       margin-top: 1rem;
+      flex-wrap: wrap;
     }
 
     .social-links a {
@@ -676,17 +673,7 @@
       border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    /* Responsive Design */
     @media (max-width: 900px) {
-      .cards-container {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .card {
-        width: 90%;
-      }
-
       .hamburger {
         display: block;
       }
@@ -702,85 +689,46 @@
         align-items: center;
         padding: 2rem 0;
         transition: left 0.3s ease;
+        z-index: 999;
       }
 
       .nav-links.active {
         left: 0;
       }
-
-      .nav-links li {
-        margin: 1rem 0;
-      }
-
-      .hero h1 {
-        font-size: 2.2rem;
-      }
-
-      .hero p {
-        font-size: 1rem;
-      }
-
-      .carousel-container {
-        height: 300px;
-      }
       
       .main-content {
         flex-direction: column;
-      }
-      
-      .comments-section {
-        max-width: 100%;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .carousel-container {
-        height: 200px;
-      }
-
-      .hero {
-        height: 60vh;
-      }
-
-      .hero h1 {
-        font-size: 1.8rem;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Navigation -->
-<header>
-  <nav>
-<a href="#" class="logo" style="position: absolute; left: 50px; font-size: 25px;">
-  <img src="TeatroIbiscoFlor.png" alt="Logo Teatro Ibisco" style="height: 45px; vertical-align: middle; margin-right: 10px;">
-  Teatro Inter-Bairros para a Inclusão Social e Cultura do Otimismo
-</a>
-    <!-- This pushes everything after it to the right -->
-    <div style="float: right;">
-      <button class="hamburger" id="hamburger">
-        <i class="fas fa-bars"></i>
-      </button>
-      <ul class="nav-links" id="navLinks" style="display: inline-block; margin: 0; padding: 0;">
-        <li style="display: inline-block; margin-left: 790px;"><a href="index.html">Home</a></li>
-        <li style="display: inline-block; margin-left: 20px;"><a href="about.html">About</a></li>
-        <li style="display: inline-block; margin-left: 20px;"><a href="galeria.html">Galeria</a></li>
-        <li style="display: inline-block; margin-left: 20px;"><a href="events.html">Eventos</a></li>
-        <li style="display: inline-block; margin-left: 20px;"><a href="contacto.html">Contacto</a></li>
-        <li style="display: inline-block; margin-left: 20px;">
-          <button class="theme-toggle" id="themeToggle">
-            <i class="fas fa-moon"></i>
-          </button>
-        </li>
-      </ul>
-    </div>
+  <header>
+    <nav>
+      <a href="#" class="logo">
+        <img src="TeatroIbiscoFlor.png" alt="#">
+        Teatro Inter-Bairros para a Inclusão Social e Cultura do Otimismo
+      </a>
+      <div style="display: flex; align-items: center;">
+        <button class="hamburger" id="hamburger">
+          <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="galeria.html">Galeria</a></li>
+          <li><a href="events.html">Eventos</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li>
+            <button class="theme-toggle" id="themeToggle">
+              <i class="fas fa-moon"></i>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
 
-    <!-- This clearfix prevents layout issues -->
-    <div style="clear: both;"></div>
-  </nav>
-</header>
-
-  <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
       <h1>Bem-Vindo ao Teatro Ibisco</h1>
@@ -789,20 +737,14 @@
     </div>
   </section>
 
-  <!-- Main Content with Comments and Carousel -->
   <div class="main-content">
-    <!-- Comments Section - Left Side -->
     <div class="comments-section">
       <h2 class="comments-title">
         <i class="fas fa-comments"></i> Comentários da Comunidade
       </h2>
       
-      <!-- Comments Display Area -->
-      <div class="comments-container" id="commentsContainer">
-        <!-- Comments will be loaded here dynamically -->
-      </div>
+      <div class="comments-container" id="commentsContainer"></div>
       
-      <!-- Comment Form -->
       <div class="comment-form">
         <h3 style="margin-bottom: 15px; color: var(--text);">Deixe o seu comentário</h3>
         <div class="form-group">
@@ -817,23 +759,21 @@
       </div>
     </div>
     
-    <!-- Right Side - Carousel -->
     <div class="right-content">
       <section class="carousel-section" id="gallery">
         <h2 class="section-title">Produções Atuais</h2>
         <div class="carousel-container">
           <button class="arrow left">&#10094;</button>
           
-          <!-- Carousel Slides -->
           <div class="carousel-slides">
             <div class="slide">
-              <img src="Images/TeatroIbiscoSemFundo.png" alt="Produção Ibisco">
+              <img src="TeatroIbiscoSemFundo.png" alt="Exemplo">
             </div>
             <div class="slide">
-              <img src="Images/TeatroIbiscoSemFundo.png" alt="Produção Ibisco">
+              <img src="TeatroIbiscoSemFundo.png" alt="Exemplo">
             </div>
             <div class="slide">
-              <img src="Images/TeatroIbiscoSemFundo.png" alt="Produção Ibisco">
+              <img src="TeatroIbiscoSemFundo.png" alt="Exemplo">
             </div>
           </div>
           
@@ -848,13 +788,12 @@
     </div>
   </div>
 
-  <!-- Cards Section -->
   <section class="card-section" id="events">
     <h2 class="section-title">Próximos Eventos</h2>
     <div class="cards-container">
       <div class="card">
         <div class="card-image-container">
-          <img src="images/TeatroIbiscoSemFundo.png" alt="Exemplo" class="card-image">
+          <img src="TeatroIbiscoSemFundo.png" alt="Exemplo" class="card-image">
         </div>
         <div class="card-content">
           <h3 class="card-title">Exemplo</h3>
@@ -865,7 +804,7 @@
       
       <div class="card">
         <div class="card-image-container">
-          <img src="images/TeatroIbiscoSemFundo.png" alt="Exemplo" class="card-image">
+          <img src="TeatroIbiscoSemFundo.png" alt="Exemplo" class="card-image">
         </div>
         <div class="card-content">
           <h3 class="card-title">Exemplo</h3>
@@ -876,7 +815,7 @@
 
       <div class="card">
         <div class="card-image-container">
-          <img src="images/TeatroIbiscoSemFundo.png" alt="Exemplo" class="card-image">
+          <img src="TeatroIbiscoSemFundo.png" alt="Exemplo" class="card-image">
         </div>
         <div class="card-content">
           <h3 class="card-title">Exemplo</h3>
@@ -887,10 +826,9 @@
     </div>
   </section>
 
-  <!-- About Section -->
   <section class="about-section" id="about">
     <div class="about-image">
-      <img src="images/TeatroIbiscoSemFundo.png" alt="Ibisco Theater Building">
+      <img src="TeatroIbiscoSemFundo.png" alt="Ibisco Theater Building">
     </div>
     <div class="about-content">
       <h2>A Nossa História</h2>
@@ -900,7 +838,6 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <footer id="contact">
     <div class="footer-content">
       <div class="footer-column">
@@ -940,7 +877,7 @@
         <h3>Boletim Informativo</h3>
         <p>Subscreva para receber atualizações sobre próximos eventos e ofertas especiais.</p>
         <form>
-          <input type="email" placeholder="Your email" style="width: 100%; padding: 0.5rem; margin-bottom: 0.5rem; border-radius: 4px; border: 1px solid #555;">
+          <input type="email" placeholder="Your email" style="width: 100%; padding: 0.5rem; margin-bottom: 0.5rem; border-radius: 4px; border: 1px solid #555; background: white; color: #333;">
           <button type="submit" class="button-placeholder" style="width: 100%; margin: 0;">Subscribe</button>
         </form>
       </div>
@@ -952,7 +889,6 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Navigation toggle for mobile
       const hamburger = document.getElementById('hamburger');
       const navLinks = document.getElementById('navLinks');
       
@@ -962,7 +898,6 @@
           '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
       });
 
-      // Close mobile menu when clicking a link
       document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => {
           navLinks.classList.remove('active');
@@ -970,11 +905,9 @@
         });
       });
 
-      // Dark mode toggle
       const themeToggle = document.getElementById('themeToggle');
       const body = document.body;
       
-      // Check for saved theme preference
       const currentTheme = localStorage.getItem('theme');
       if (currentTheme === 'dark') {
         body.classList.add('dark-mode');
@@ -988,57 +921,33 @@
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
       });
 
-      // Comments functionality
       const commentsContainer = document.getElementById('commentsContainer');
       const commentName = document.getElementById('commentName');
       const commentText = document.getElementById('commentText');
       const submitBtn = document.getElementById('submitComment');
       
-      // Load comments from localStorage
       let comments = JSON.parse(localStorage.getItem('teatroIbiscoComments')) || [];
       
-      // Sample comments if none exist
       if (comments.length === 0) {
         comments = [
-          {
-            author: 'Maria Silva',
-            text: 'O Teatro Ibisco tem um trabalho maravilhoso com a comunidade! Os espetáculos são emocionantes e muito bem produzidos.',
-            date: '2024-03-15',
-            id: 1
-          },
-          {
-            author: 'João Santos',
-            text: 'A associação faz um excelente trabalho de inclusão social através da arte. Recomendo a todos que conheçam!',
-            date: '2024-03-14',
-            id: 2
-          },
-          {
-            author: 'Ana Oliveira',
-            text: 'Participei do último workshop e foi uma experiência transformadora. Equipe muito dedicada e acolhedora.',
-            date: '2024-03-13',
-            id: 3
-          }
+          { author: 'Maria Silva', text: 'O Teatro Ibisco tem um trabalho maravilhoso com a comunidade! Os espetáculos são emocionantes e muito bem produzidos.', date: '2024-03-15', id: 1 },
+          { author: 'João Santos', text: 'A associação faz um excelente trabalho de inclusão social através da arte. Recomendo a todos que conheçam!', date: '2024-03-14', id: 2 },
+          { author: 'Ana Oliveira', text: 'Participei do último workshop e foi uma experiência transformadora. Equipe muito dedicada e acolhedora.', date: '2024-03-13', id: 3 }
         ];
         localStorage.setItem('teatroIbiscoComments', JSON.stringify(comments));
       }
       
-      // Display comments
       function displayComments() {
         commentsContainer.innerHTML = '';
-        
-        // Sort comments by date (newest first)
         const sortedComments = [...comments].sort((a, b) => new Date(b.date) - new Date(a.date));
         
         sortedComments.forEach(comment => {
           const commentElement = document.createElement('div');
           commentElement.className = 'comment-item';
           
-          // Format date
           const commentDate = new Date(comment.date);
           const formattedDate = commentDate.toLocaleDateString('pt-PT', {
-            day: '2-digit',
-            month: '2-digit',
-            year: 'numeric'
+            day: '2-digit', month: '2-digit', year: 'numeric'
           });
           
           commentElement.innerHTML = `
@@ -1055,7 +964,6 @@
       
       displayComments();
       
-      // Add new comment
       submitBtn.addEventListener('click', function() {
         const name = commentName.value.trim();
         const text = commentText.value.trim();
@@ -1065,7 +973,6 @@
           return;
         }
         
-        // Create new comment
         const newComment = {
           author: name,
           text: text,
@@ -1076,18 +983,12 @@
         comments.push(newComment);
         localStorage.setItem('teatroIbiscoComments', JSON.stringify(comments));
         
-        // Clear form
         commentName.value = '';
         commentText.value = '';
-        
-        // Refresh display
         displayComments();
-        
-        // Scroll to top of comments
         commentsContainer.scrollTop = 0;
       });
 
-      // Carousel functionality
       const slidesContainer = document.querySelector('.carousel-slides');
       const slides = document.querySelectorAll('.slide');
       const dots = document.querySelectorAll('.dot');
@@ -1096,51 +997,31 @@
       let currentIndex = 0;
       let slideInterval;
 
-      // Initialize carousel
-      function initCarousel() {
-        updateCarousel();
-        startAutoSlide();
-      }
-
-      // Update carousel position
       function updateCarousel() {
         slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-        
-        // Update dots
         dots.forEach((dot, index) => {
           dot.innerHTML = index === currentIndex ? '&#9679;' : '&#9675;';
         });
       }
 
-      // Go to specific slide
-      function goToSlide(index) {
-        currentIndex = index;
-        updateCarousel();
-      }
-
-      // Next slide
       function nextSlide() {
         currentIndex = (currentIndex + 1) % slides.length;
         updateCarousel();
       }
 
-      // Previous slide
       function prevSlide() {
         currentIndex = (currentIndex - 1 + slides.length) % slides.length;
         updateCarousel();
       }
 
-      // Start auto sliding
       function startAutoSlide() {
-        slideInterval = setInterval(nextSlide, 5000); // Change every 5 seconds
+        slideInterval = setInterval(nextSlide, 5000);
       }
 
-      // Stop auto sliding
       function stopAutoSlide() {
         clearInterval(slideInterval);
       }
 
-      // Event listeners
       nextBtn.addEventListener('click', () => {
         stopAutoSlide();
         nextSlide();
@@ -1156,17 +1037,16 @@
       dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
           stopAutoSlide();
-          goToSlide(index);
+          currentIndex = index;
+          updateCarousel();
           startAutoSlide();
         });
       });
 
-      // Pause on hover
       const carousel = document.querySelector('.carousel-container');
       carousel.addEventListener('mouseenter', stopAutoSlide);
       carousel.addEventListener('mouseleave', startAutoSlide);
 
-      // Smooth scrolling for anchor links
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
           e.preventDefault();
@@ -1183,13 +1063,8 @@
         });
       });
 
-      // Initialize
-      initCarousel();
+      startAutoSlide();
     });
   </script>
 </body>
-
 </html>
-
-
-
