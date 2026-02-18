@@ -370,7 +370,28 @@
       border: none;
     }
 
-    /* Video container styles */
+    /* Video container styles - 16:9 aspect ratio */
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 ratio */
+      height: 0;
+      overflow: hidden;
+      max-width: 100%;
+      background: #000;
+      margin: 2rem auto;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
     .video-section {
       margin-top: 3rem;
       background-color: var(--bg-teal);
@@ -383,34 +404,6 @@
       .video-section {
         padding: 2rem;
       }
-    }
-
-    .video-container {
-      position: relative;
-      width: 100%;
-      max-width: 800px;
-      margin: 0 auto;
-      background: #000;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    }
-
-    .video-wrapper {
-      position: relative;
-      width: 100%;
-      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-      background: #000;
-    }
-
-    .video-wrapper video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      background: #000;
     }
 
     .video-title {
@@ -695,7 +688,7 @@
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3110.748942693492!2d-9.13310872416402!3d38.81758847169449!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd192d96265e034b%3A0xfd5722b065b3669b!2sYour%20Location!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
     </div>
     
-    <!-- Video Section with the exact video element you requested -->
+    <!-- New Video Section - Updated with the requested video player -->
     <div class="video-section">
       <h3 class="video-title">
         <i class="fas fa-directions" style="margin-right: 5px;"></i>
@@ -705,19 +698,11 @@
         Veja este vídeo para ver o percurso exato até ao nosso teatro a partir da estrada principal.
       </p>
       <div class="video-container">
-        <div class="video-wrapper">
-          <video 
-            tabindex="-1" 
-            class="video-stream html5-main-video" 
-            webkit-playsinline="" 
-            playsinline="" 
-            controls
-            controlslist="nodownload"
-            style="width: 100%; height: 100%; object-fit: cover;">
-            <source src="Localizacao.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>
+        <iframe 
+          src="https://drive.google.com/file/d/1JBpb7-9QqkrqvqL9PQ26PKNAAS40XOk9/preview"
+          allowfullscreen
+          allow="autoplay; encrypted-media">
+        </iframe>
       </div>
     </div>
   </section>
@@ -863,16 +848,6 @@
           }
         });
       });
-      
-      // Video player optimization for mobile
-      const video = document.querySelector('video');
-      if (video) {
-        video.addEventListener('loadedmetadata', function() {
-          // Ensure video plays well on mobile
-          this.setAttribute('webkit-playsinline', '');
-          this.setAttribute('playsinline', '');
-        });
-      }
     });
   </script>
 </body>
